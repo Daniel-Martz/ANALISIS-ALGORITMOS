@@ -12,6 +12,8 @@
 
 #include "permutations.h"
 #include <time.h>
+#include <stdio.h>
+#include <stdlib.h> 
 /*CONSTANTES PARA LA FUNCION QUE GENERA RANDOM NUMBERS*/
 #define IA 16807 /*Multiplicador de Park and Miller*/
 #define IM 2147483647/* Primo 2^31 - 1 muy grande que será nuestro módulo y nos dará una secuencia de 2^31-2 números*/
@@ -25,8 +27,8 @@
 
 
 /***************************************************/
-/* Function: random_num Date:                      */
-/* Authors:                                        */
+/* Function: random_num Date: 20/09/2025           */
+/* Authors: Daniel Martínez                        */
 /*                                                 */
 /* Rutine that generates a random number           */
 /* between two given numbers                       */
@@ -106,7 +108,21 @@ int random_num(int inf, int sup)
 /***************************************************/
 int* generate_perm(int N)
 {
-  /* your code */
+  int i, *perm,e_aux,i_aux;
+  if(!(perm =(int*)calloc(N, sizeof(int)))){
+    return NULL;
+  }
+  for(i=1;i<=N;i++){
+    perm[i-1] = i;
+  }
+  for(i=0;i<N;i++){
+    e_aux = perm[i];
+    i_aux = random_num(0,N-1); 
+    perm[i] = perm[i_aux];
+    perm[i_aux] = e_aux;
+  }
+
+  return perm;
 }
 
 /***************************************************/
