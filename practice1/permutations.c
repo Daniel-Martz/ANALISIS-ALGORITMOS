@@ -75,7 +75,6 @@ float ran1(long *idum){
     iv[j] = *idum; /* Se actualiza la nueva semilla con la antes generada*/
 
     if ((temp = AM * iy) > RNMX) return RNMX; else return temp; /* Hacemos la transformación a un número en [0,1) comprobando que no sea 1*/
-
 }
 
 
@@ -94,8 +93,8 @@ int random_num(int inf, int sup)
 }
 
 /***************************************************/
-/* Function: generate_perm Date:                   */
-/* Authors:                                        */
+/* Function: generate_perm Date: 22/09/2025        */
+/* Authors: Daniel Martínez                        */
 /*                                                 */
 /* Rutine that generates a random permutation      */
 /*                                                 */
