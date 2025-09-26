@@ -20,31 +20,36 @@ int InsertSort(int *array, int ip, int iu)
 {
   if (array == NULL)
   {
+    fprintf(stderr, "El array es invalido.\n");
+    return ERR;
+  }
+  if (ip < 0 || iu < 0)
+  {
+    fprintf(stderr, "Los indices tienen que ser positivos.");
+    return ERR;
+  }
+  if (ip > iu)
+  {
+    fprintf(stderr, "El primer indice tiene que ser mayor que el ultimo.\n");
     return ERR;
   }
 
-  int i, j, num = 0, aux;
+  int i, j, OB = 0, aux;
 
-  for (i = ip; i < iu; i++)
+  for (i = ip + 1; i <= iu; i++)
   {
+    aux = array[i];
     j = i - 1;
-
-    if (array[i] > array[i + 1])
+    while (j >= ip && array[j] > aux)
     {
-      aux = array[i];
-      array[i] = array[i + 1];
-      array[i + 1] = aux;
-      while ((j >= ip) && (array[j + 1] < array[j]))
-      {
-        aux = array[j];
-        array[j] = array[j + 1];
-        array[j + 1] = aux;
-        j--;
-        num++;
-      }
+      array[j + 1] = array[j];
+      OB++;
+      j--;
     }
+    array[j + 1] = aux;
   }
-  return num;
+
+  return OB;
 }
 
 /***************************************************/
