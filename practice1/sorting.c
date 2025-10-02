@@ -64,10 +64,22 @@ int BubbleSort(int *array, int ip, int iu)
   int aux = 0;
   int OB = 0;
 
-  if (!array || ip < 0 || iu <= ip)
+  if (array == NULL)
   {
+    fprintf(stderr, "El array es invalido.\n");
     return ERR;
   }
+  if (ip < 0 || iu < 0)
+  {
+    fprintf(stderr, "Los indices tienen que ser positivos.");
+    return ERR;
+  }
+  if (ip > iu)
+  {
+    fprintf(stderr, "El primer indice tiene que ser mayor que el ultimo.\n");
+    return ERR;
+  }
+  
   while ((flag == 1) && (i > ip))
   {
     flag = 0;
