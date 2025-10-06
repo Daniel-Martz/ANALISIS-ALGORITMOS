@@ -18,6 +18,8 @@
 /***************************************************/
 int InsertSort(int *array, int ip, int iu)
 {
+  int i, j, OB = 0, aux;
+  
   if (array == NULL)
   {
     fprintf(stderr, "El array es invalido.\n");
@@ -34,7 +36,6 @@ int InsertSort(int *array, int ip, int iu)
     return ERR;
   }
 
-  int i, j, OB = 0, aux;
 
   for (i = ip + 1; i <= iu; i++)
   {

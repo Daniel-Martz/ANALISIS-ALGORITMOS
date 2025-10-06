@@ -14,16 +14,7 @@
 #include "permutations.h"
 #include <stdio.h>
 #include <time.h>
-
-typedef struct time_aa
-{
-  int N;             // Input size
-  int n_elems;       // total number of elements to be averaged
-  double time;       // average clock time
-  double average_ob; // avergae number of times the OB is executed
-  int min_ob;        // minimum number of OB executions
-  int max_ob;        // maximum number of OB executions
-} TIME_AA, *PTIME_AA;
+#include <stdlib.h>
 
 /***************************************************/
 /* Function: average_sorting_time Date:            */
@@ -83,7 +74,7 @@ short average_sorting_time(pfunc_sort metodo,
   ptime->average_ob = sum_OB / n_perms;
   ptime->max_ob = max_OB;
   ptime->min_ob = min_OB;
-  ptime->time = end - start /CLOCKS_PER_SEC;
+  ptime->time = (double)(end - start) /CLOCKS_PER_SEC;
   free(array_perms);
   return OK;
 }
@@ -101,7 +92,7 @@ short generate_sorting_times(pfunc_sort method, char *file,
   int i;
   PTIME_AA ptime = NULL;
 
-  if (!method || !fout || num_min <= 0 || num_max < num_min)
+  if (!method || num_min <= 0 || num_max < num_min)
   {
     return ERR;
   }
@@ -120,6 +111,7 @@ short generate_sorting_times(pfunc_sort method, char *file,
   {
     if (average_sorting_time(method, n_perms, i, ptime) == ERR)
     {
+      free(ptime);
       return ERR;
     }
     fprintf(fout, "Tamaño de la permutacion: %i elementos | Tiempo medio:%lf segundos | Numero promedio de OB realizadas:%lf | Numero minimo de OB realizadas:%i | Numero maximo de OB realizadas:%i\n", i, ptime->time, ptime->average_ob, ptime->min_ob, ptime->max_ob);
@@ -144,14 +136,14 @@ short save_time_table(char *file, PTIME_AA ptime, int n_times)
     return ERR;
   }
 
-  if(!(file = fopen(file,"w"))){
+  if(!(fout = fopen(file,"w"))){
     return ERR;
   }
 
-  fprintf(fout, "|\tN\t|\ttime\t|\taverage_ob\t|\tmax_ob\t|\tmin_ob\t|");
+  fprintf(fout, "|\tN\t|\ttime\t|\taverage_ob\t|\tmax_ob\t|\tmin_ob\t|\n");
   for(i=0; i<n_times;i++){
-    fprintf(fout, "|\t%i\t|\t%lf\t|\t%lf\t|\t%i\t|\t%i\t|", ptime[i].N, ptime[i].time,ptime[i].average_ob,ptime[i].max_ob, ptime[i].min_ob);
+    fprintf(fout, "|\t%i\t|\t%lf\t|\t%lf\t|\t%i\t|\t%i\t|\n", ptime[i].N, ptime[i].time,ptime[i].average_ob,ptime[i].max_ob, ptime[i].min_ob);
   }
-  fclose(file);
+  fclose(fout);
   return OK;
 }

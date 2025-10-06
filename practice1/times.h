@@ -19,8 +19,6 @@
   #define OK (!(ERR))
 #endif
 
-typedef struct time_aa TIME_AA;
-
 #include "sorting.h"
 
 /* type definitions */
