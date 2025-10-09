@@ -1,5 +1,10 @@
-Tamaño de la permutacion: 1 elementos | Tiempo medio:0.000007 segundos | Numero promedio de OB realizadas:0.000000 | Numero minimo de OB realizadas:0 | Numero maximo de OB realizadas:0
-Tamaño de la permutacion: 2 elementos | Tiempo medio:0.000001 segundos | Numero promedio de OB realizadas:1.000000 | Numero minimo de OB realizadas:1 | Numero maximo de OB realizadas:1
-Tamaño de la permutacion: 3 elementos | Tiempo medio:0.000001 segundos | Numero promedio de OB realizadas:3.000000 | Numero minimo de OB realizadas:3 | Numero maximo de OB realizadas:3
-Tamaño de la permutacion: 4 elementos | Tiempo medio:0.000002 segundos | Numero promedio de OB realizadas:5.000000 | Numero minimo de OB realizadas:3 | Numero maximo de OB realizadas:6
-Tamaño de la permutacion: 5 elementos | Tiempo medio:0.000002 segundos | Numero promedio de OB realizadas:9.600000 | Numero minimo de OB realizadas:9 | Numero maximo de OB realizadas:10
+Tamaño de la permutacion: 1 elementos | Tiempo medio:0.000002 segundos | Numero promedio de OB realizadas:0.000000 | Numero minimo de OB realizadas:0 | Numero maximo de OB realizadas:0
+Tamaño de la permutacion: 21 elementos | Tiempo medio:0.000011 segundos | Numero promedio de OB realizadas:202.400000 | Numero minimo de OB realizadas:174 | Numero maximo de OB realizadas:210
+Tamaño de la permutacion: 41 elementos | Tiempo medio:0.000032 segundos | Numero promedio de OB realizadas:784.200000 | Numero minimo de OB realizadas:742 | Numero maximo de OB realizadas:810
+Tamaño de la permutacion: 61 elementos | Tiempo medio:0.000066 segundos | Numero promedio de OB realizadas:1808.800000 | Numero minimo de OB realizadas:1764 | Numero maximo de OB realizadas:1827
+Tamaño de la permutacion: 81 elementos | Tiempo medio:0.000104 segundos | Numero promedio de OB realizadas:3180.200000 | Numero minimo de OB realizadas:3120 | Numero maximo de OB realizadas:3212
+Tamaño de la permutacion: 101 elementos | Tiempo medio:0.000154 segundos | Numero promedio de OB realizadas:4944.000000 | Numero minimo de OB realizadas:4797 | Numero maximo de OB realizadas:5035
+Tamaño de la permutacion: 121 elementos | Tiempo medio:0.000212 segundos | Numero promedio de OB realizadas:7044.400000 | Numero minimo de OB realizadas:6795 | Numero maximo de OB realizadas:7239
+Tamaño de la permutacion: 141 elementos | Tiempo medio:0.000291 segundos | Numero promedio de OB realizadas:9805.200000 | Numero minimo de OB realizadas:9734 | Numero maximo de OB realizadas:9870
+Tamaño de la permutacion: 161 elementos | Tiempo medio:0.000344 segundos | Numero promedio de OB realizadas:12667.800000 | Numero minimo de OB realizadas:12352 | Numero maximo de OB realizadas:12865
+Tamaño de la permutacion: 181 elementos | Tiempo medio:0.000429 segundos | Numero promedio de OB realizadas:16155.400000 | Numero minimo de OB realizadas:15884 | Numero maximo de OB realizadas:16235
