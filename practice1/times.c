@@ -32,6 +32,7 @@ short average_sorting_time(pfunc_sort metodo,
 
   if (metodo == NULL || ptime == NULL || n_perms <= 0 || N <= 0)
   {
+    fprintf(stderr, "Las variables introducidas no son válidas.");
     return ERR;
   }
 
@@ -94,16 +95,19 @@ short generate_sorting_times(pfunc_sort method, char *file,
 
   if (!method || num_min <= 0 || num_max < num_min)
   {
+    fprintf(stderr, "Las variables introducidas no son válidas.");
     return ERR;
   }
 
   if (!(fout = fopen(file, "w")))
   {
+    fprintf(stderr, "Error al abrir el fichero");
     return ERR;
   }
 
   if (!(ptime = (PTIME_AA)calloc(1, sizeof(TIME_AA))))
   {
+    fprintf(stderr, "Error al reservar memoria para la estructura del tiempo");
     return ERR;
   }
 
@@ -133,10 +137,12 @@ short save_time_table(char *file, PTIME_AA ptime, int n_times)
   int i;
 
   if(!ptime || n_times<=0 || !file){
+    fprintf(stderr, "Las variables introducidas no son válidas.");
     return ERR;
   }
 
   if(!(fout = fopen(file,"w"))){
+    fprintf(stderr, "Error al abrir el fichero");
     return ERR;
   }
 

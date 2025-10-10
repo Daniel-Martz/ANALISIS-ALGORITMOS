@@ -47,34 +47,34 @@
  * @return un decimal entr 0 y 1 sin incluir este ultimo
  */
 float ran1(long *idum){
-  int j; /*indice para la tabla shuffle*/
-  long k; /* Variable auxiliar para el overflow*/
-  static long iy=0; /*Numero previamente generado devuelto desde la tabla shuffle*/
-  static long iv[NTAB];/* tabla shuffle*/
-  float temp;/*Numero aleatorio que devolveremos*/
+  int j; 
+  long k; 
+  static long iy=0;
+  static long iv[NTAB];
+  float temp;
 
-  if (*idum <= 0 || !iy)/* se inicializa si la semilla es negativa o si iy aún no se ha definido*/
+  if (*idum <= 0 || !iy)
   {
-    if (-(*idum) < 1) *idum = 1;  /* Aseguramos que la semilla sea positiva y distinta de cero*/
+    if (-(*idum) < 1) *idum = 1;
     else *idum = -(*idum);
 
-    for (j = NTAB+7; j >= 0; j--) { /* Se hace un calentamiento (8 iteraciones) y se llena la tabla*/
-        k = (*idum) / IQ; /* Hacemos la semila más pequeña para que al multiplicarla por IA no nos de problemas de overflow*/
-        *idum = IA * (*idum - k * IQ) - IR * k; /*Hemos conseguido aplicar LCG pero usando dos multiplicaciones para evitar overflow en vez de hacer una multiplicacion muy grande*/
-        if (*idum < 0) *idum += IM; /* Hacemos que el número esté entre 0 y IM -1 si no lo está*/
-        if (j < NTAB) iv[j] = *idum; /* Empezamos a llenar la tabla después de hacer el calentamiento*/
+    for (j = NTAB+7; j >= 0; j--) { 
+        k = (*idum) / IQ; 
+        *idum = IA * (*idum - k * IQ) - IR * k; 
+        if (*idum < 0) *idum += IM; 
+        if (j < NTAB) iv[j] = *idum; 
     }
-    iy = iv[0]; /* Tomamos el primer valor de la tabla*/
+    iy = iv[0]; 
   }
     /*Generación del numero aleatorio*/
     k = (*idum) / IQ;
-    *idum = IA * (*idum - k * IQ) - IR * k; /* Hacemos LCG como antes evitando overflow*/
-    if (*idum < 0) *idum += IM; /* Hacemos que el número esté entre 0 y IM -1 si no lo está*/
-    j = iy / NDIV; /* Convierte el valor iy a un índice entro 0 y NTAB-1 (un índice aleatorio)*/
-    iy = iv[j]; /* Obtenemos la nueva semilla para el próximo número*/
-    iv[j] = *idum; /* Se actualiza la nueva semilla con la antes generada*/
+    *idum = IA * (*idum - k * IQ) - IR * k;
+    if (*idum < 0) *idum += IM; 
+    j = iy / NDIV;
+    iy = iv[j]; 
+    iv[j] = *idum;
 
-    if ((temp = AM * iy) > RNMX) return RNMX; else return temp; /* Hacemos la transformación a un número en [0,1) comprobando que no sea 1*/
+    if ((temp = AM * iy) > RNMX) return RNMX; else return temp; 
 }
 
 
@@ -84,6 +84,10 @@ int random_num(int inf, int sup)
   int rango;
   float rand;
 
+  if(inf>sup){
+    fprintf(stderr, "El índice inferior no puede ser mayor que el superior.");
+    return ERR;
+  }
   if(seed == 0){
     seed = -(long)time(NULL); /*Va a ser la semilla inicial*/
   }
@@ -109,6 +113,7 @@ int* generate_perm(int N)
 {
   int i, *perm,e_aux,i_aux;
   if(!(perm =(int*)calloc(N, sizeof(int)))){
+    fprintf(stderr, "Problema reservando la memoria para la permutacion");
     return NULL;
   }
   for(i=1;i<=N;i++){
@@ -145,12 +150,14 @@ int** generate_permutations(int n_perms, int N)
 
   if (n_perms <=0 || N<= 0)
   {
+    fprintf(stderr, "Las variables introducidas no son válidas.");
     return NULL;
   }
 
   array_perm = (int**)calloc(n_perms,sizeof(int*)); 
   if (array_perm == NULL)
   {
+    fprintf(stderr, "Error reservando la memoria para el array de permutaciones.");
     return NULL;
   }
 
