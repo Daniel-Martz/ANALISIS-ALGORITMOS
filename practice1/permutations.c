@@ -126,7 +126,7 @@ int* generate_perm(int N)
 
 /***************************************************/
 /* Function: generate_permutations Date:           */
-/* Authors:                                        */
+/* Authors: Rodrigo Diaz                           */
 /*                                                 */
 /* Function that generates n_perms random          */
 /* permutations with N elements                    */

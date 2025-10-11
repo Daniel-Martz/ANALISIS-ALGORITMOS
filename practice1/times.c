@@ -114,7 +114,7 @@ short generate_sorting_times(pfunc_sort method, char *file,
       free(ptime);
       return ERR;
     }
-    fprintf(fout, "Tamaño de la permutacion: %i elementos | Tiempo medio:%lf segundos | Numero promedio de OB realizadas:%lf | Numero minimo de OB realizadas:%i | Numero maximo de OB realizadas:%i\n", i, ptime->time, ptime->average_ob, ptime->min_ob, ptime->max_ob);
+    fprintf(fout, "Tamaño de la permutacion: %i elementos | Tiempo medio:%f segundos | Numero promedio de OB realizadas:%f | Numero minimo de OB realizadas:%i | Numero maximo de OB realizadas:%i\n", i, ptime->time, ptime->average_ob, ptime->min_ob, ptime->max_ob);
   }
 
   fclose(fout);
@@ -142,7 +142,7 @@ short save_time_table(char *file, PTIME_AA ptime, int n_times)
 
   fprintf(fout, "|\tN\t|\ttime\t|\taverage_ob\t|\tmax_ob\t|\tmin_ob\t|\n");
   for(i=0; i<n_times;i++){
-    fprintf(fout, "|\t%i\t|\t%lf\t|\t%lf\t|\t%i\t|\t%i\t|\n", ptime[i].N, ptime[i].time,ptime[i].average_ob,ptime[i].max_ob, ptime[i].min_ob);
+    fprintf(fout, "|\t%i\t|\t%f\t|\t%f\t|\t%i\t|\t%i\t|\n", ptime[i].N, ptime[i].time,ptime[i].average_ob,ptime[i].max_ob, ptime[i].min_ob);
   }
   fclose(fout);
   return OK;
