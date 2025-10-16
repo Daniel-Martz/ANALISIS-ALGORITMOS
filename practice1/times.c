@@ -75,7 +75,7 @@ short average_sorting_time(pfunc_sort metodo,
   ptime->average_ob = sum_OB / n_perms;
   ptime->max_ob = max_OB;
   ptime->min_ob = min_OB;
-  ptime->time = (double)(end - start) /CLOCKS_PER_SEC;
+  ptime->time = (double)(end - start) / CLOCKS_PER_SEC;
   free(array_perms);
   return OK;
 }
@@ -89,39 +89,37 @@ short generate_sorting_times(pfunc_sort method, char *file,
                              int num_min, int num_max,
                              int incr, int n_perms)
 {
-  FILE *fout = NULL;
-  int i;
+  int i, n_times;
   PTIME_AA ptime = NULL;
 
-  if (!method || num_min <= 0 || num_max < num_min)
+  if (!method || num_min <= 0 || num_max < num_min || incr <= 0)
   {
-    fprintf(stderr, "Las variables introducidas no son válidas.");
+    fprintf(stderr, "Las variables introducidas no son válidas.\n");
     return ERR;
   }
 
-  if (!(fout = fopen(file, "w")))
+  n_times = ((num_max - num_min) / incr) + 1;
+
+  if (!(ptime = (PTIME_AA)calloc(n_times, sizeof(TIME_AA))))
   {
-    fprintf(stderr, "Error al abrir el fichero");
+    fprintf(stderr, "Error al reservar memoria para la estructura del tiempo.\n");
     return ERR;
   }
-
-  if (!(ptime = (PTIME_AA)calloc(1, sizeof(TIME_AA))))
+  for (i = 0; i < n_times; i++)
   {
-    fprintf(stderr, "Error al reservar memoria para la estructura del tiempo");
-    return ERR;
-  }
-
-  for (i = num_min; i <= num_max; i += incr)
-  {
-    if (average_sorting_time(method, n_perms, i, ptime) == ERR)
+    int N = num_min + i * incr;
+    if (average_sorting_time(method, n_perms, N, &ptime[i]) == ERR)
     {
       free(ptime);
       return ERR;
     }
-    fprintf(fout, "Tamaño de la permutacion: %i elementos | Tiempo medio:%f segundos | Numero promedio de OB realizadas:%f | Numero minimo de OB realizadas:%i | Numero maximo de OB realizadas:%i\n", i, ptime->time, ptime->average_ob, ptime->min_ob, ptime->max_ob);
+  }
+  if (save_time_table(file, ptime, n_times) == ERR)
+  {
+    free(ptime);
+    return ERR;
   }
 
-  fclose(fout);
   free(ptime);
   return OK;
 }
@@ -136,20 +134,30 @@ short save_time_table(char *file, PTIME_AA ptime, int n_times)
   FILE *fout = NULL;
   int i;
 
-  if(!ptime || n_times<=0 || !file){
+  if (!ptime || n_times <= 0 || !file)
+  {
     fprintf(stderr, "Las variables introducidas no son válidas.");
     return ERR;
   }
 
-  if(!(fout = fopen(file,"w"))){
+  if (!(fout = fopen(file, "w")))
+  {
     fprintf(stderr, "Error al abrir el fichero");
     return ERR;
   }
 
-  fprintf(fout, "|\tN\t|\ttime\t|\taverage_ob\t|\tmax_ob\t|\tmin_ob\t|\n");
-  for(i=0; i<n_times;i++){
-    fprintf(fout, "|\t%i\t|\t%f\t|\t%f\t|\t%i\t|\t%i\t|\n", ptime[i].N, ptime[i].time,ptime[i].average_ob,ptime[i].max_ob, ptime[i].min_ob);
+  fprintf(fout, "%-6s %-12s %-14s %-8s %-8s\n", "N", "Time", "Average_OB", "Max_OB", "Min_OB");
+
+  for (i = 0; i < n_times; i++)
+  {
+    fprintf(fout, "%-6i %-12.6f %-14.2f %-8i %-8i\n",
+            ptime[i].N,
+            ptime[i].time,
+            ptime[i].average_ob,
+            ptime[i].max_ob,
+            ptime[i].min_ob);
   }
+
   fclose(fout);
   return OK;
 }
