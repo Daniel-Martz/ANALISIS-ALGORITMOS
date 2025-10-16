@@ -24,7 +24,7 @@ f_bubble(x) = c2 + d2*x + e2*x**2
 # --- Datos experimentales y ajustes ---
 plot "insert_1000_1000.dat" using 1:2 with linespoints lt rgb "#0033CC" lw 2 pt 7 title "InsertSort (datos)", \
      "bubble_1000_1000.dat" using 1:2 with linespoints lt rgb "#CC0000" lw 2 pt 5 title "BubbleSort (datos)", \
-     f_insert(x) with lines lt rgb "#00CC99" lw 3 dt 2 title "InsertSort (ajuste cuadrático)", \
-     f_bubble(x) with lines lt rgb "#FFA500" lw 3 dt 2 title "BubbleSort (ajuste cuadrático)"
+     f_insert(x) with lines lt rgb "#00FF00" lw 3 dt 2 title "InsertSort (ajuste cuadrático)", \
+     f_bubble(x) with lines lt rgb "#800080" lw 3 dt 2 title "BubbleSort (ajuste cuadrático)"
 
 unset output                            # cierra el fichero
