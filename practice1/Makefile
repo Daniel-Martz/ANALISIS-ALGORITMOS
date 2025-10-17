@@ -47,7 +47,7 @@ exercise1_test:
 
 exercise2_test:
 	@echo Running exercise2
-	@./exercise2 -size 8 -numP 6
+	@./exercise2 -size 8 -numP -1
 
 exercise3_test:
 	@echo Running exercise3
@@ -55,11 +55,11 @@ exercise3_test:
 
 exercise4_test:
 	@echo Running exercise4
-	@./exercise4 -size 1
+	@./exercise4 -size 20
 
 exercise5_test:
 	@echo Running exercise5
-	@./exercise5 -num_min 1 -num_max 1000 -incr 20 -numP 1000 -outputFile exercise5.dat
+	@./exercise5 -num_min 1 -num_max 20 -incr 1 -numP 10000 -outputFile exercise5.dat
 
 prueba:
 	@./prubea -size 1
