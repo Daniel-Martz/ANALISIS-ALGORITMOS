@@ -112,6 +112,11 @@ int random_num(int inf, int sup)
 int* generate_perm(int N)
 {
   int i, *perm,e_aux,i_aux;
+
+  if(N <= 0){
+    fprintf(stderr, "El tamaño de la permutacion no es valido");
+    return NULL;
+  }
   if(!(perm =(int*)calloc(N, sizeof(int)))){
     fprintf(stderr, "Problema reservando la memoria para la permutacion");
     return NULL;
