@@ -82,7 +82,7 @@ int main() {
 
     fprintf(fout, "# N\tTInsert_Best\tTBubble_Best\tTInsert_Worst\tTBubble_Worst\n");
 
-    for (N = 1; N <= 1000; N += 10) {
+    for (N = 0; N <= 1000; N += 10) {
         array = (int *) malloc(N * sizeof(int));
         if (!array) {
             fprintf(stderr, "Error al reservar memoria.\n");
