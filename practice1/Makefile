@@ -59,7 +59,7 @@ exercise4_test:
 
 exercise5_test:
 	@echo Running exercise5
-	@./exercise5 -num_min 1 -num_max 20 -incr 1 -numP 10000 -outputFile exercise5.dat
+	@./exercise5 -num_min 1 -num_max 20 -incr 1 -numP 100000 -outputFile bubble_20_100000.dat
 
 prueba:
 	@./prubea -size 1

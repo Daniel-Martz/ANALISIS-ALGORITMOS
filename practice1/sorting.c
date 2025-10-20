@@ -47,6 +47,7 @@ int InsertSort(int *array, int ip, int iu)
       OB++;
       j--;
     }
+    if (j >= ip) OB++;
     array[j + 1] = aux;
   }
 

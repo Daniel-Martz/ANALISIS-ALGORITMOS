@@ -1,9 +1,9 @@
 set terminal jpeg size 800,600           # tipo de salida y tamaño
-set output "comparacion_OBs.jpg"         # archivo de salida
+set output "comparacion_tiempo_medio_s_con.jpg"         # archivo de salida
 
-set title "Comparación del tiempo medio de OBs"
+set title "Comparación del tiempo medio"
 set xrange [1:1000]
-set xlabel "Tamaño de la permutación"
+set xlabel "Tamaño de la permutación (N)"
 set ylabel "Tiempo medio (s)"
 set key top left
 set grid
