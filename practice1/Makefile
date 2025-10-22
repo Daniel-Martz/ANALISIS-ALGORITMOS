@@ -11,7 +11,7 @@ all : $(EXE)
 
 .PHONY : clean
 clean :
-	rm -f *.o core $(EXE)
+	rm -f *.o core $(EXE) *.dat
 
 $(EXE) : % : %.o sorting.o times.o permutations.o
 	@echo "#---------------------------"
@@ -43,11 +43,11 @@ sorting.o : sorting.c sorting.h
 	
 exercise1_test:
 	@echo Running exercise1
-	@./exercise1 -limInf 10 -limSup 15 -numN -12
+	@./exercise1 -limInf 10 -limSup 15 -numN 1
 
 exercise2_test:
 	@echo Running exercise2
-	@./exercise2 -size 8 -numP -1
+	@./exercise2 -size 8 -numP 1
 
 exercise3_test:
 	@echo Running exercise3
@@ -60,6 +60,3 @@ exercise4_test:
 exercise5_test:
 	@echo Running exercise5
 	@./exercise5 -num_min 1 -num_max 20 -incr 1 -numP 100000 -outputFile bubble_20_100000.dat
-
-prueba:
-	@./prubea -size 1

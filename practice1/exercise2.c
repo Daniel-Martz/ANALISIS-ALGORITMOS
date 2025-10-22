@@ -61,6 +61,7 @@ int main(int argc, char** argv)
       printf("\n");
       free(perm); /* free permutations */
     }
+    
   }
 
   return 0;
