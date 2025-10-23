@@ -1,1 +1,0 @@
-En esta carpeta se encuentran pequeños programas y scripts para gnuplot, que hemos realizado para crear tablas con datos y poder hacer las gráficas. No todas las gráficas se han hecho con los programas de esta carpeta, también se ha usado el exercise5_test modificando los parametros para crear tablas de datos
