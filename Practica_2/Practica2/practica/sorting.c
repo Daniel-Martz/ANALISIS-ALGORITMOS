@@ -16,6 +16,8 @@
 int merge(int *tabla, int ip, int iu, int imedio);
 int partition(int *tabla, int ip, int iu, int *pos);
 int median(int *tabla, int ip, int iu, int *pos);
+int median_avg(int *tabla, int ip, int iu, int *pos);
+int median_stat(int *tabla, int ip, int iu, int *pos);
 
 
 /***************************************************/
@@ -108,7 +110,7 @@ int BubbleSort(int *array, int ip, int iu)
 }
 
 /***************************************************/
-/* Function: mergesort    Date: 23/10/2025         */
+/* Function: Mergesort    Date: 23/10/2025         */
 /* Your comment                                    */
 /***************************************************/
 
@@ -127,22 +129,21 @@ int merge(int *tabla, int ip, int iu, int imedio)
 
   i = ip;
   j = imedio + 1;
-  k = ip;
+  k = 0;/*Porque la tabla auxiliar siempre empieza por 0*/
 
   while (i <= imedio && j <= iu)
   {
     if (tabla[i] < tabla[j])
     {
       tabla_aux[k] = tabla[i];
-      k++;
       i++;
     }
     else
     {
       tabla_aux[k] = tabla[j];
-      k++;
       j++;
     }
+    k++;
     OB++;
   }
 
@@ -157,22 +158,22 @@ int merge(int *tabla, int ip, int iu, int imedio)
   }
   else if (j > iu)
   {
-    while (i < imedio)
+    while (i <= imedio)
     {
       tabla_aux[k] = tabla[i];
       i++;
       k++;
     }
   }
-  for (i = ip; i < (iu - ip + 1); i++)
-  {
-    tabla[i] = tabla_aux[i] ;
+  for (i = ip; i <= iu; i++){
+    tabla[i] = tabla_aux[i - ip];
   }
+  
   free(tabla_aux);
   return OB;
 }
 
-int mergesort(int *array, int ip, int iu)
+int Mergesort(int *array, int ip, int iu)
 {
   int p_medio;
   int OB_1, OB_2, OB_3, OB;
@@ -198,28 +199,27 @@ int mergesort(int *array, int ip, int iu)
     return 0;
   }
 
-  p_medio = (ip + iu) / 2;
+  p_medio = (ip + iu) / 2;/* Punto medio como función suelo*/
 
-  OB_1 = mergesort(array, ip, p_medio);
+  OB_1 = Mergesort(array, ip, p_medio);
   if (OB_1 == ERR)
     return ERR;
 
-  OB_2 = mergesort(array, p_medio + 1, iu);
+  OB_2 = Mergesort(array, p_medio + 1, iu);
   if (OB_2 == ERR)
     return ERR;
 
-  OB_3 = merge(array, ip, p_medio, iu);
+  OB_3 = merge(array, ip, iu, p_medio);
   if (OB_3 == ERR)
     return ERR;
 
-  OB = OB_1 + OB_2 + OB_3;
+  OB = OB_1 + OB_2 + OB_3; /*Se termina sumando cada una de las OBs hechas por rutina*/
   return OB;
 }
 
 int quicksort(int *tabla, int ip, int iu)
 {
   int m, ob1 = 0, ob2 = 0, ob3 = 0, ob;
-  ;
   int *pos = NULL;
 
   if (tabla == NULL)
@@ -271,7 +271,7 @@ int quicksort(int *tabla, int ip, int iu)
       return ERR;
     }
   }
-  ob = ob1+ob2+ob3;
+  ob = ob1+ob2+ob3; /*Se termina sumando cada una de las OBs hechas por rutina*/
   free(pos);
   return ob;
 }
@@ -289,13 +289,14 @@ int partition(int *tabla, int ip, int iu, int *pos)
     return ERR;
   }
 
-  if (median(tabla, ip, iu, pos) == ERR)
+  ob=median(tabla, ip, iu, pos);
+  if (ob == ERR)
   {
     return ERR;
   }
   m = *pos;
   k = tabla[m];
-  aux = tabla[m];
+  aux = tabla[m];/*Guardamos el dato de la posición a pivotar*/
   tabla[m] = tabla[ip];
   tabla[ip] = aux;
   m = ip;
@@ -308,7 +309,7 @@ int partition(int *tabla, int ip, int iu, int *pos)
       tabla[m] = tabla[i];
       tabla[i] = aux;
     }
-    ob++;
+    ob++;/*Por cada if se hace una comparación de claves*/
   }
   aux = tabla[m];
   tabla[m] = tabla[ip];
@@ -319,8 +320,71 @@ int partition(int *tabla, int ip, int iu, int *pos)
 
 int median(int *tabla, int ip, int iu, int *pos)
 {
-  if (!tabla || iu < ip || !pos)
+  if (!tabla || iu < ip || !pos){
+    fprintf(stderr, "Fallo en la rutina median\n");
     return ERR;
+  }
+  /*Elección del pivote*/
   *pos = ip;
   return 0;
+}
+
+int median_avg(int *tabla, int ip, int iu, int *pos)
+{
+  if (!tabla || iu < ip || !pos){
+    fprintf(stderr, "Fallo en la rutina median_avg\n");
+    return ERR;
+  }
+  /*Elección del pivote*/
+  *pos = (ip + iu)/2;
+  return 0;
+}
+
+int median_stat(int *tabla, int ip, int iu, int *pos)
+{
+  int im;
+  int a;
+  int b;
+  int c;
+  int OB = 0;
+  if (!tabla || iu < ip || !pos){
+    fprintf(stderr, "Fallo en la rutina median_stat\n");
+    return ERR;
+  }
+  
+  im = (ip + iu) / 2;
+  a = tabla[ip];
+  b = tabla[im];
+  c = tabla[iu];
+    /* Determinación de la mediana usando como máximo 3 comparaciones.
+       Esta secuencia asegura que en todas las combinaciones
+       devolvemos la posición que contiene el valor intermedio. */
+  OB++;
+  if (a < b) {
+      OB++;
+      if (b < c) {
+        *pos = im;        /* a < b < c  -> b es mediana */
+      } 
+      else { /* b >= c */
+        OB++;
+        if (a < c)
+          *pos = iu;    /* a < c <= b -> c es mediana */
+        else
+          *pos = ip;    /* c <= a < b -> a es mediana */
+      }
+    } 
+    else { /* a >= b */
+      OB++;
+      if (a < c) {
+        *pos = ip;        /* b <= a < c -> a es mediana */
+      } 
+      else { /* a >= c */
+        OB++;
+        if (b < c)
+          *pos = iu;    /* b < c <= a -> c es mediana */
+        else
+          *pos = im;    /* c <= b <= a -> b es mediana */
+      }
+    }
+  return OB;
 }

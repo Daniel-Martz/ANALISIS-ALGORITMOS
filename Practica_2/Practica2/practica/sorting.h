@@ -27,6 +27,6 @@ typedef int (* pfunc_sort)(int*, int, int);
 int BubbleSort(int* array, int ip, int iu);
 int InsertSort(int* array, int ip, int iu);
 
-int mergesort(int* array, int ip, int iu);
+int Mergesort(int* array, int ip, int iu);
 int quicksort(int* tabla, int ip, int iu);
 #endif 

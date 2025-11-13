@@ -29,7 +29,7 @@ int main(int argc, char** argv)
     fprintf(stderr, " -size : number of elements in the permutation.\n");
     return 0;
   }
-  printf("Practice number 1, section 4\n");
+  printf("Practice number 2, section 5.2\n");
   printf("Done by: Rodrigo y Daniel\n");
   printf("Group: 1272/1202\n");
 
@@ -49,10 +49,10 @@ int main(int argc, char** argv)
     exit(-1);
   }
 
-  ret =mergesort(perm, 0, tamano-1);
+  ret =quicksort(perm, 0, tamano-1);
 
   if (ret == ERR) {
-    printf("Error: Error in BubbleSort\n");
+    printf("Error: Error in quicksort\n");
     free(perm);
     exit(-1);
   }
