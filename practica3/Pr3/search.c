@@ -62,7 +62,7 @@ void potential_key_generator(int *keys, int n_keys, int max)
 PDICT init_dictionary(int size, char order)
 {
   int i;
-  if (size <= 0)
+  if ((size <= 0) || (order != SORTED && order != NOT_SORTED))
   {
     return NULL;
   }
