@@ -3,7 +3,7 @@
  * Description: Implementation of functions for search
  *
  * File: search.c
- * Author: Carlos Aguirre and Javier Sanz-Cruzado
+ * Author: Daniel Martinez y Rodrigo Diaz-Reganon
  * Version: 1.0
  * Date: 14-11-2016
  *
@@ -69,17 +69,18 @@ PDICT init_dictionary(int size, char order)
   PDICT dictionary = malloc(sizeof(DICT));
   if (dictionary == NULL)
   {
-    fprintf(stderr,"Error en la creacion del diccionario.");
+    fprintf(stderr, "Error en la creacion del diccionario.");
     return NULL;
   }
 
   dictionary->n_data = 0;
   dictionary->size = size;
   dictionary->order = order;
+
   dictionary->table = (int *)calloc(size, sizeof(int));
   if (dictionary->table == NULL)
   {
-    fprintf(stderr,"Error en la creacion de la tabla del diccionario.");
+    fprintf(stderr, "Error en la creacion de la tabla del diccionario.");
     free(dictionary);
     return NULL;
   }
@@ -105,43 +106,146 @@ void free_dictionary(PDICT pdict)
 
 int insert_dictionary(PDICT pdict, int key)
 {
+  int aux;
+  int j;
+  int Ob = 0;
 
-  if (!pdict || pdict->size <= 0 || pdict->n_data < 0 || pdict->n_data >= pdict->size || !pdict->table || pdict->order != ){
-    fprintf(stderr,"Error en los parametros de entrada de insert_dictionary");
+  if (!pdict || pdict->size <= 0 || pdict->n_data < 0 || pdict->n_data >= pdict->size || !pdict->table || (pdict->order != SORTED && pdict->order != NOT_SORTED))
+  {
+    fprintf(stderr, "Error en los parametros de entrada de insert_dictionary");
     return ERR;
   }
-    if (pdict->order == NOT_SORTED)
-    {
-      pdict->table[pdict->data] = key;
-      pdict->n_data++;
+  pdict->table[pdict->n_data] = key;
+
+  if (pdict->order == SORTED)
+  {
+    aux = pdict->table[pdict->n_data];
+    j = pdict->n_data - 1;
+    /* implementamos el pseudocodigo donde cada vez que se itera en el bucle se hace */
+    while (j >= 0 && pdict->table[j] > aux){
+      pdict->table[j + 1] = pdict->table[j];
+      Ob++;
     }
-    else
-    {
-    }
+    j--;
+    pdict->table[j + 1] = aux;
+  }
+  pdict->n_data++;
+  return Ob;
 }
 
 int massive_insertion_dictionary(PDICT pdict, int *keys, int n_keys)
 {
-  /* your code */
+  int i;
+  int Ob = 0;
+  int aux;
+  if (!pdict || pdict->size <= 0 || pdict->n_data < 0 || pdict->n_data >= pdict->size || !pdict->table || (pdict->order != SORTED && pdict->order != NOT_SORTED) || !keys || n_keys<=0 || n_keys>(pdict->size-pdict->n_data))
+  {
+    fprintf(stderr, "Error en los parametros de entrada de massive_insert_dictionary");
+    return ERR;
+  }
+  /* Bucle de insercion*/
+  for(i=0; i< n_keys; i++){
+    if((aux=insert_dictionary(pdict, keys[i])) == ERR) return ERR;
+    Ob += aux;
+  }
+  return Ob; 
 }
 
 int search_dictionary(PDICT pdict, int key, int *ppos, pfunc_search method)
 {
-  /* your code */
+  if (pdict == NULL || ppos == NULL || method == NULL)
+  {
+    return ERR;
+  }
+  return method(pdict->table, 0, pdict->n_data - 1, key, ppos);
 }
 
 /* Search functions of the Dictionary ADT */
 int bin_search(int *table, int F, int L, int key, int *ppos)
 {
-  /* your code */
+  if(!table)
+  int OB = 0;
+  int i;  
+  if (table == NULL || F > L || ppos == NULL)
+  {
+    return NOT_FOUND; 
+  }
+
+  while (F <= L) 
+  {
+    /* Calculamos el punto medio en cada iteración */
+    i = (F + L) / 2;
+    OB++;
+    /* Comparamos */
+    if (table[i] == key)
+    {
+      *ppos = i; 
+      return OB; 
+    }
+
+    /* Ajustamos los límites */
+    if (key < table[i])
+    {
+      L = i - 1; 
+    }
+    else
+    {
+      F = i + 1;
+    }
+  }
+  return NOT_FOUND;
 }
 
 int lin_search(int *table, int F, int L, int key, int *ppos)
 {
-  if ((table == NULL) || (F>L))
+  int OB = 0, i;
+  if ((table == NULL) || (F > L) || (ppos == NULL))
+  {
+    return NOT_FOUND;
+  }
+
+  i = F;
+  while (i <= L)
+  {
+    OB++;
+    if (key == table[i])
+    {
+      *ppos = i;
+      return OB;
+    }
+    i++;
+  }
+  return NOT_FOUND;
 }
 
 int lin_auto_search(int *table, int F, int L, int key, int *ppos)
 {
-  /* your code */
+  int i, OB = 0, aux; 
+  if(table == NULL || F>L || ppos == NULL)
+  {
+    return NOT_FOUND; 
+  }
+
+  i = F;
+  if (table[i]==key)
+  {
+    OB++;
+    ppos = i;
+    return OB;
+  }
+  i++; 
+  while (i <= L)
+  {
+    OB++;
+    if (key == table[i])
+    {
+      *ppos = i;
+      tabla[i]=aux;
+
+      return OB;
+    }
+    i++;
+  }
+  return NOT_FOUND;
+  
 }
