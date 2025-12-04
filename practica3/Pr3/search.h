@@ -3,7 +3,7 @@
  * Descriptions: Declarations of the search functions and data
  *
  * File: search.h
- * Author: Carlos Aguirre and Javier Sanz-Cruzado
+ * Author: Daniel Martinez y Rodrigo Diaz-Reganon
  * Version: 1.0
  * Date: 14-11-2019
  *
