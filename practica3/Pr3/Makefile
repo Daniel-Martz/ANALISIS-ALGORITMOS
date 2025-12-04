@@ -13,21 +13,14 @@ all : $(EXE)
 clean :
 	rm -f *.o core $(EXE)
 
-$(EXE) : % : %.o sorting.o search.o times.o permutations.o
+$(EXE) : % : %.o search.o times.o permutations.o
 	@echo "#---------------------------"
 	@echo "# Generating $@ "
 	@echo "# Depepends on $^"
 	@echo "# Has changed $<"
-	$(CC) $(CFLAGS) -o $@ $@.o sorting.o search.o times.o permutations.o
+	$(CC) $(CFLAGS) -o $@ $@.o search.o times.o permutations.o
 
 permutations.o : permutations.c permutations.h
-	@echo "#---------------------------"
-	@echo "# Generating $@ "
-	@echo "# Depepends on $^"
-	@echo "# Has changed $<"
-	$(CC) $(CFLAGS) -c $<
-
-sorting.o : sorting.c sorting.h
 	@echo "#---------------------------"
 	@echo "# Generating $@ "
 	@echo "# Depepends on $^"
@@ -54,4 +47,13 @@ exercise1_test:
 
 exercise2_test:
 	@echo Running exercise2
-	@./exercise2 -num_min 1 -num_max 5 -incr 1 -n_times 1 -outputFile exercise5.log
+	@./exercise2 -num_min 1 -num_max 1000 -incr 100 -n_times 100 -outputFile exercise2.log
+
+plotBinarySearch_test:
+	@echo Running $@ 
+	@./exercise2 -num_min 1 -num_max 1000 -incr 1 -n_times 10 -outputFile datos.log
+	@gnuplot -persist -e "set title 'Binary Search OBs vs Size'; \
+	set xlabel 'Size'; \
+	set ylabel 'OBs'; \
+	plot 'datos.log' u 1:3 w lines title 'Average OB', \
+	"

@@ -62,11 +62,13 @@ void potential_key_generator(int *keys, int n_keys, int max)
 PDICT init_dictionary(int size, char order)
 {
   int i;
+  PDICT dictionary = NULL;
   if ((size <= 0) || (order != SORTED && order != NOT_SORTED))
   {
     return NULL;
   }
-  PDICT dictionary = malloc(sizeof(DICT));
+  
+  dictionary = malloc(sizeof(DICT));
   if (dictionary == NULL)
   {
     fprintf(stderr, "Error en la creacion del diccionario.");
@@ -126,8 +128,8 @@ int insert_dictionary(PDICT pdict, int key)
     {
       pdict->table[j + 1] = pdict->table[j];
       Ob++;
+      j--;
     }
-    j--;
     pdict->table[j + 1] = aux;
   }
   pdict->n_data++;
@@ -141,7 +143,7 @@ int massive_insertion_dictionary(PDICT pdict, int *keys, int n_keys)
   int aux;
   if (!pdict || pdict->size <= 0 || pdict->n_data < 0 || pdict->n_data >= pdict->size || !pdict->table || (pdict->order != SORTED && pdict->order != NOT_SORTED) || !keys || n_keys <= 0 || n_keys > (pdict->size - pdict->n_data))
   {
-    fprintf(stderr, "Error en los parametros de entrada de massive_insert_dictionary");
+    fprintf(stderr, "Error en los parametros de entrada de massive_insert_dictionary\n");
     return ERR;
   }
   /* Bucle de insercion*/
@@ -158,6 +160,7 @@ int search_dictionary(PDICT pdict, int key, int *ppos, pfunc_search method)
 {
   if (pdict == NULL || ppos == NULL || method == NULL)
   {
+    fprintf(stderr, "Error en los parametros de entrada de search_dictionary\n");
     return ERR;
   }
   return method(pdict->table, 0, pdict->n_data - 1, key, ppos);
@@ -170,8 +173,10 @@ int bin_search(int *table, int F, int L, int key, int *ppos)
   int i;
   if (table == NULL || F > L || ppos == NULL)
   {
-    return NOT_FOUND;
+    fprintf(stderr, "Error en los parametros de entrada de massive_insert_dictionary\n");
+    return ERR;
   }
+  *ppos = NOT_FOUND;  
 
   while (F <= L)
   {
@@ -195,7 +200,7 @@ int bin_search(int *table, int F, int L, int key, int *ppos)
       F = i + 1;
     }
   }
-  return NOT_FOUND;
+  return ERR;
 }
 
 int lin_search(int *table, int F, int L, int key, int *ppos)
@@ -203,9 +208,10 @@ int lin_search(int *table, int F, int L, int key, int *ppos)
   int OB = 0, i;
   if ((table == NULL) || (F > L) || (ppos == NULL))
   {
-    return NOT_FOUND;
+    return ERR;
   }
 
+  *ppos = NOT_FOUND;
   i = F;
   while (i <= L)
   {
@@ -217,7 +223,7 @@ int lin_search(int *table, int F, int L, int key, int *ppos)
     }
     i++;
   }
-  return NOT_FOUND;
+  return ERR;
 }
 
 int lin_auto_search(int *table, int F, int L, int key, int *ppos)
@@ -225,14 +231,15 @@ int lin_auto_search(int *table, int F, int L, int key, int *ppos)
   int i, OB = 0, aux;
   if (table == NULL || F > L || ppos == NULL)
   {
-    return NOT_FOUND;
+    return ERR;
   }
-
-  i = F;
+  
+  *ppos = NOT_FOUND;
+    i = F;
   OB++;
   if (table[i] == key)
   {
-    ppos = i;
+    *ppos = i;
     return OB;
   }
   i++;
@@ -249,5 +256,5 @@ int lin_auto_search(int *table, int F, int L, int key, int *ppos)
     }
     i++;
   }
-  return NOT_FOUND;
+  return ERR;
 }

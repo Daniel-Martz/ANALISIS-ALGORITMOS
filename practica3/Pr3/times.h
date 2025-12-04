@@ -15,6 +15,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
+#include "permutations.h"  
 
 typedef struct time_aa
 {
