@@ -49,6 +49,7 @@ exercise2_test:
 	@echo Running exercise2
 	@./exercise2 -num_min 1000 -num_max 10000 -incr 100 -n_times 1 -outputFile Lin_auto_N1.dat
 
+
 plotLinealvsBinaria_promedioOB:
 	@gnuplot -persist -e "set title 'Comparación OBs Promedio: Binaria vs Lineal'; \
 	set xlabel 'Tamaño (N)'; \
