@@ -1,6 +1,6 @@
 /***********************************************************/
-/* Program: exercise2 Date:                             */
-/* Authors:                                                */
+/* Program: exercise2 Date: 23/11/2025                     */
+/* Authors:  Daniel Martínez y Rodrigo Díaz-Regañón        */
 /*                                                         */
 /* Program that writes in a file the average times         */
 /* of the search algorithm                                 */
@@ -8,7 +8,7 @@
 /* Input: Command line                                     */
 /* -num_min: minimum number of elements in the table       */
 /* -num_max: maximum number of elements in the table       */
-/* -incr: increment                                       */
+/* -incr: increment                                        */
 /* -fkeys: number of keys to search                        */
 /* -numP: Introduce the number of permutations to average  */
 /* -outputFile: Name of the output file                    */

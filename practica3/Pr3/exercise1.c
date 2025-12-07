@@ -1,16 +1,15 @@
-/***********************************************/
-/* Program: exercise1     Date:             */
-/* Authors:                                    */
-/*                                             */
-/* Program that checks the correct behaviour of*/
-/* linear search                               */
-/*                                             */
-/* Input: Command line                         */
-/*   -size: number of elements in the dictionary */
-/*   -key:  key to search                      */
-/*                                             */
-/* Output: 0: OK, -1: ERR                      */
-/***********************************************/
+/**************************************************************/
+/* Program: exercise1 Date: 23/11/2025                        */
+/* Authors:  Daniel Martínez y Rodrigo Díaz-Regañón           */
+/*                                                            */
+/* Program that checks the correct behaviour of linear search */
+/*                                                            */
+/* Input: Command line                                        */
+/*   -size: number of elements in the dictionary              */
+/*   -key:  key to search                                     */
+/*                                                            */
+/* Output: 0: OK, -1: ERR                                     */
+/**************************************************************/
 
 #include<stdlib.h>
 #include<stdio.h>

@@ -3,9 +3,9 @@
  * Descriptions: Declarations of the search functions and data
  *
  * File: search.h
- * Author: Carlos Aguirre and Javier Sanz-Cruzado
+ * Autor: Daniel Martínez y Rodrigo Díaz-Regañón
  * Version: 1.0
- * Date: 14-11-2019
+ * Fecha: 23-11-2025
  *
  */
 
