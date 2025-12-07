@@ -325,7 +325,7 @@ int lin_auto_search(int *table, int F, int L, int key, int *ppos)
     OB++;
     if (key == table[i])
     {
-      *ppos = i;
+      *ppos = i-1;
       aux = table[i];
       table[i] = table[i - 1];
       table[i - 1] = aux;

@@ -47,7 +47,7 @@ exercise1_test:
 
 exercise2_test:
 	@echo Running exercise2
-	@./exercise2 -num_min 1000 -num_max 10000 -incr 100 -n_times 100 -outputFile exercise2.log
+	@./exercise2 -num_min 100 -num_max 10000 -incr 100 -n_times 1 -outputFile search_lin_auto.dat
 
 plotBinarySearch_test:
 	@echo Running $@ 

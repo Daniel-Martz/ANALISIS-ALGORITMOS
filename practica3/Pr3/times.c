@@ -127,7 +127,8 @@ short average_search_time(pfunc_search metodo, pfunc_key_generator generator, in
 
         if (OB_aux == ERR || OB_aux == NOT_FOUND || dict->table[pos] != keys[i])
         {
-            fprintf(stderr, "Error al realizar la busqueda");
+            printf("%i. %i", keys[i], dict->table[pos]);
+            fprintf(stderr, "Error al realizar la busqueda\n");
             free_dictionary(dict);
             free(perm);
             free(keys);
