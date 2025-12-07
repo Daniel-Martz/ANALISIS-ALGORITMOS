@@ -3,9 +3,9 @@
  * Description: Implementation of functions for search
  *
  * File: search.c
- * Author: Daniel Martinez y Rodrigo Diaz-Reganon
+ * Author: Daniel Martinez y Rodrigo Diaz-Regañón
  * Version: 1.0
- * Date: 14-11-2016
+ * Date: 20-11-2025
  *
  */
 

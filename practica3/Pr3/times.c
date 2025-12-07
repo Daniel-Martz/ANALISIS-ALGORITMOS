@@ -3,9 +3,9 @@
  * Descripcion: Implementation of time measurement functions
  *
  * Fichero: times.c
- * Autor: Carlos Aguirre Maeso
+ * Autor: Daniel Martínez y Rodrigo Díaz-Regañón
  * Version: 1.0
- * Fecha: 16-09-2019
+ * Fecha: 23-11-2025
  *
  */
 
@@ -15,6 +15,15 @@
 #include <time.h>
 #include <stdlib.h>
 
+/**
+ * @brief Subrutina para save_time_tables que guarda todos los tiempos tomados en una 
+ * estructura TIME_AA en un archivo con un formáto en columnas
+ * 
+ * @param file Nombre del archivo donde se guardaran los tiempos
+ * @param ptime Tabla de estrcuturas TIME_AA
+ * @param N Número de estructuras a escribir
+ * @return OK si todo va bien, ERR en caso de error 
+ */
 short save_time_table(char *file, PTIME_AA ptime, int N)
 {
     FILE *fout = NULL;
@@ -47,6 +56,22 @@ short save_time_table(char *file, PTIME_AA ptime, int N)
     return OK;
 }
 
+/**
+ * @brief funcion que rellena todos los campos de la estructura TIMEAA:
+ * - número de permutaciones
+ * - número de elementos por permutación
+ * - tiempo medio en segundos
+ * - número medio de OBs
+ * - número mínimo de OBs
+ * - número máximo de OBs
+ * @param metodo Método de ordenación
+ * @param generator Función que genera las claves
+ * @param order Si se usan las tablas ordeandas en el TAD diccionario
+ * @param N Tamaño del diccionario
+ * @param n_times Número de veces que se busca cada N clave en el diccionario
+ * @param ptime Puntero al diccionario
+ * @return OK si todo fue bien, ERR si hay algun fallo
+ */
 short average_search_time(pfunc_search metodo, pfunc_key_generator generator, int order, int N, int n_times, PTIME_AA ptime)
 {
 
@@ -144,6 +169,20 @@ short average_search_time(pfunc_search metodo, pfunc_key_generator generator, in
     return OK;
 }
 
+/**
+ * @brief Automatiza la toma de tiempos, llamando a generate_search_time
+ * con un tamaño variable que va incrementando, guarda todos los tiempos en 
+ * dentro de un archivo
+ * 
+ * @param method Método de ordenación
+ * @param generator Función que genera las claves
+ * @param order Si se usan las tablas ordeandas en el TAD diccionario
+ * @param file Archivo donde se guardan los tiempos
+ * @param num_min Tamaño mínimo por el que se empieza a tomar tiempos
+ * @param num_max Tamaño en el que se finaliza la toma de tiempos
+ * @param incr Incremento de tamaño en cada iteración
+ * @param n_times Número de veces que se busca cada clave en el diccionario
+ */
 short generate_search_times(pfunc_search method, pfunc_key_generator generator,
                             int order, char *file, int num_min, int num_max, int incr, int n_times)
 {
