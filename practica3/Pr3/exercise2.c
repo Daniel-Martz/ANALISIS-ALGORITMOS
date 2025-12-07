@@ -69,7 +69,11 @@ int main(int argc, char** argv)
   }
 
   /* calculamos los tiempos */
+<<<<<<< HEAD
   ret = generate_search_times(bin_search, uniform_key_generator, SORTED, 
+=======
+  ret = generate_search_times(lin_search, uniform_key_generator, NOT_SORTED, 
+>>>>>>> 420fa39743f8c4f78c2ea315465012192042593e
                                 name, num_min, num_max, incr, n_times);
   if (ret == ERR) { 
     printf("Error in function generate_search_times\n");
