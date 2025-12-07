@@ -43,7 +43,7 @@ times.o : times.c times.h
 
 exercise1_test:
 	@echo Running exercise1
-	@./exercise1 -size 10 -key 5
+	@valgrind --leak-check=full ./exercise1 -size 100 -key 67
 
 exercise2_test:
 	@echo Running exercise2

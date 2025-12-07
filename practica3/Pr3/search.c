@@ -117,6 +117,7 @@ int insert_dictionary(PDICT pdict, int key)
     fprintf(stderr, "Error en los parametros de entrada de insert_dictionary");
     return ERR;
   }
+  /*guardamos al final de la tabla el elemento*/
   pdict->table[pdict->n_data] = key;
 
   if (pdict->order == SORTED)
@@ -173,7 +174,7 @@ int bin_search(int *table, int F, int L, int key, int *ppos)
   int i;
   if (table == NULL || F > L || ppos == NULL)
   {
-    fprintf(stderr, "Error en los parametros de entrada de massive_insert_dictionary\n");
+    fprintf(stderr, "Error en los parametros de entrada de bin_search\n");
     return ERR;
   }
   *ppos = NOT_FOUND;  
@@ -200,7 +201,7 @@ int bin_search(int *table, int F, int L, int key, int *ppos)
       F = i + 1;
     }
   }
-  return ERR;
+  return NOT_FOUND;
 }
 
 int lin_search(int *table, int F, int L, int key, int *ppos)
@@ -208,6 +209,7 @@ int lin_search(int *table, int F, int L, int key, int *ppos)
   int OB = 0, i;
   if ((table == NULL) || (F > L) || (ppos == NULL))
   {
+    fprintf(stderr, "Error en los parametros de entrada de lin_search\n");
     return ERR;
   }
 
@@ -223,7 +225,7 @@ int lin_search(int *table, int F, int L, int key, int *ppos)
     }
     i++;
   }
-  return ERR;
+  return NOT_FOUND;
 }
 
 int lin_auto_search(int *table, int F, int L, int key, int *ppos)
@@ -231,6 +233,7 @@ int lin_auto_search(int *table, int F, int L, int key, int *ppos)
   int i, OB = 0, aux;
   if (table == NULL || F > L || ppos == NULL)
   {
+    fprintf(stderr, "Error en los parametros de entrada de lin_auto_search\n");
     return ERR;
   }
   
@@ -256,5 +259,5 @@ int lin_auto_search(int *table, int F, int L, int key, int *ppos)
     }
     i++;
   }
-  return ERR;
+  return NOT_FOUND;
 }
