@@ -254,7 +254,7 @@ int bin_search(int *table, int F, int L, int key, int *ppos)
       F = i + 1;
     }
   }
-  return NOT_FOUND;
+  return OB;
 }
 
 /**
@@ -288,7 +288,7 @@ int lin_search(int *table, int F, int L, int key, int *ppos)
     }
     i++;
   }
-  return NOT_FOUND;
+  return OB;
 }
 
 /**
@@ -333,5 +333,5 @@ int lin_auto_search(int *table, int F, int L, int key, int *ppos)
     }
     i++;
   }
-  return NOT_FOUND;
+  return OB;
 }
