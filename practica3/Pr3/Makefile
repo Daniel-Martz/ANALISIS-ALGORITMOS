@@ -66,7 +66,26 @@ plotLinealvsBinaria_promedioTIEMPO:
 	set key top left; \
 	plot 'rodrigo_lineal.dat' u 1:2 w lines lc rgb 'red' title 'Lineal', \
 	     'rodrigo_binaria.dat' u 1:2 w lines lc rgb 'blue' title 'Binaria'"
-	@./exercise2 -num_min 1000 -num_max 10000 -incr 100 -n_times 10000 -outputFile Lin_N10000.dat
+
+plotBinaria_promedioOB:
+	@gnuplot -persist -e "set title 'Comparación OB Promedio: Binaria vs Teorico'; \
+	set xlabel 'Tamaño (N)'; \
+	set ylabel 'Numero Medio de OBs'; \
+	set grid; \
+	set key top left; \
+	f(x) = log(x)/log(2) - 1; \
+	plot 'rodrigo_binaria_1PARTE.dat' u 1:3 w lines lc rgb 'blue' title 'Binario', \
+	     f(x) w lines lc rgb 'black' title 'Teórica log(N)'"
+
+
+
+
+
+
+
+
+
+
 
 plotBinarySearch_test:
 	@echo Running $@ 
