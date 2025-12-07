@@ -59,6 +59,14 @@ void potential_key_generator(int *keys, int n_keys, int max)
   return;
 }
 
+/**
+ * @brief Crea un diccionario vacío reservando memoria 
+ * y controlando los errores
+ * 
+ * @param size tamaño inicial del diccionario 
+ * @param order Establece si se va a crear el diccionario ordenado o no
+ * @return Puntero al diccionario creado o NULL en caso de error
+ */
 PDICT init_dictionary(int size, char order)
 {
   int i;
@@ -95,6 +103,11 @@ PDICT init_dictionary(int size, char order)
   return dictionary;
 }
 
+/**
+ * @brief Elimina el diccionario liberando correctamente la memoria del mismo
+ * 
+ * @param pdict Puntero al diccionario a eliminar
+ */
 void free_dictionary(PDICT pdict)
 {
   if (pdict == NULL)
@@ -106,6 +119,15 @@ void free_dictionary(PDICT pdict)
   return;
 }
 
+/**
+ * @brief Introduce el elemento clave en el diccionario 
+ * teniendo en cuenta si este está ordenado o no
+ * 
+ * @param pdict puntero del diccionario 
+ * @param key elemento a insertar
+ * @return Número de operaciones básicas para 
+ * la insercción del elemento o ERR en caso de error
+ */
 int insert_dictionary(PDICT pdict, int key)
 {
   int aux;
@@ -136,6 +158,14 @@ int insert_dictionary(PDICT pdict, int key)
   return Ob;
 }
 
+/**
+ * @brief 
+ * 
+ * @param pdict 
+ * @param keys 
+ * @param n_keys 
+ * @return int 
+ */
 int massive_insertion_dictionary(PDICT pdict, int *keys, int n_keys)
 {
   int i;
