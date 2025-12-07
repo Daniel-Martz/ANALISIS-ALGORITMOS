@@ -124,6 +124,7 @@ short average_search_time(pfunc_search metodo, pfunc_key_generator generator, in
     for (i = 0; i < n_elems; i++)
     {
         OB_aux = metodo(dict->table, 0, N - 1, keys[i], &pos);
+        printf("%i ", i);
 
         if (OB_aux == ERR || OB_aux == NOT_FOUND || dict->table[pos] != keys[i])
         {
