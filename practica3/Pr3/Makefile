@@ -47,7 +47,10 @@ exercise1_test:
 
 exercise2_test:
 	@echo Running exercise2
-	@./exercise2 -num_min 1000 -num_max 10000 -incr 10 -n_times 1 -outputFile rodrigo_binaria.dat
+	@./exercise2 -num_min 1000 -num_max 10000 -incr 100 -n_times 10000 -outputFile binaria_NTIMES10000_2PARTE.dat
+
+
+
 
 plotLinealvsBinaria_promedioOB:
 	@gnuplot -persist -e "set title 'Comparación OBs Promedio: Binaria vs Lineal'; \
