@@ -47,7 +47,7 @@ exercise1_test:
 
 exercise2_test:
 	@echo Running exercise2
-	@./exercise2 -num_min 1000 -num_max 10000 -incr 10 -n_times 1 -outputFile rodrigo_binaria.dat
+	@./exercise2 -num_min 1000 -num_max 10000 -incr 100 -n_times 1 -outputFile Lin_auto_N1.dat
 
 plotLinealvsBinaria_promedioOB:
 	@gnuplot -persist -e "set title 'Comparación OBs Promedio: Binaria vs Lineal'; \
@@ -96,19 +96,18 @@ plotBinarySearch_test:
 	plot 'datos.log' u 1:3 w lines title 'Average OB', \
 	"
 
-plotLin-vs-LinautoSearch_test:
+plotBin-vs-LinAuto_test:
 	@echo Running $@ 
-	@./exercise2 -num_min 1 -num_max 1000 -incr 1 -n_times 10 -outputFile datos.log
 	@gnuplot -persist -e " \
-    set title 'Comparación de Máx OBs: Lineal vs Lineal Auto-organizada (según n\_times)'; \
+    set title 'Comparación de Máx OBs: Binaria vs Lineal Auto-organizada (según n\_times)'; \
     set xlabel 'Tamaño de la Tabla (N)'; \
     set ylabel 'Máximo de Observaciones (Max OB)'; \
     set key outside right top; \
     set logscale x; \
     \
-    plot 'Lin_N1.dat' u 1:4 w lines title 'Lin Search (n\_times=1)', \
+    plot 'Bin_N1.dat' u 1:4 w lines title 'Bin Search (n\_times=1)', \
          'Lin_auto_N1.dat' u 1:4 w lines title 'Lin Auto Search (n\_times=1)', \
-         'Lin_N100.dat' u 1:4 w lines title 'Lin Search (n\_times=100)', \
+         'Bin_N100.dat' u 1:4 w lines title 'Bin Search (n\_times=100)', \
          'Lin_auto_N100.dat' u 1:4 w lines title 'Lin Auto Search (n\_times=100)', \
-         'Lin_N10000.dat' u 1:4 w lines title 'Lin Search (n\_times=10000)', \
+         'Bin_N10000.dat' u 1:4 w lines title 'Bin Search (n\_times=10000)', \
          'Lin_auto_N10000.dat' u 1:4 w lines title 'Lin Auto Search (n\_times=10000)';"
