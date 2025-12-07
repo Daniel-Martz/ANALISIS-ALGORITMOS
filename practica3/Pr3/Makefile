@@ -97,18 +97,132 @@ plotBinarySearch_test:
 	plot 'datos.log' u 1:3 w lines title 'Average OB', \
 	"
 
-plotBin-vs-LinAuto_test:
-	@echo Running $@ 
+# BINARY SEARCH (MIN OBs - COLUMNA 5)
+
+plot_Bin_N1_MinOB:
+	@echo Running $@
 	@gnuplot -persist -e " \
-    set title 'Comparación de Máx OBs: Binaria vs Lineal Auto-organizada (según n\_times)'; \
-    set xlabel 'Tamaño de la Tabla (N)'; \
-    set ylabel 'Máximo de Observaciones (Max OB)'; \
-    set key outside right top; \
-    set logscale x; \
-    \
-    plot 'Bin_N1.dat' u 1:4 w lines title 'Bin Search (n\_times=1)', \
-         'Lin_auto_N1.dat' u 1:4 w lines title 'Lin Auto Search (n\_times=1)', \
-         'Bin_N100.dat' u 1:4 w lines title 'Bin Search (n\_times=100)', \
-         'Lin_auto_N100.dat' u 1:4 w lines title 'Lin Auto Search (n\_times=100)', \
-         'Bin_N10000.dat' u 1:4 w lines title 'Bin Search (n\_times=10000)', \
-         'Lin_auto_N10000.dat' u 1:4 w lines title 'Lin Auto Search (n\_times=10000)';"
+	set title 'Bin Search: Min OB (n\_times=1)'; \
+	set xlabel 'Tamaño de la Tabla (N)'; \
+	set ylabel 'Mínimo de Operaciones Básicas (Min OB)'; \
+	set key off; \
+	set logscale x; \
+	plot 'Bin_N1.dat' u 1:5 w lines title 'Bin Search (Min OB)';"
+
+plot_Bin_N100_MinOB:
+	@echo Running $@
+	@gnuplot -persist -e " \
+	set title 'Bin Search: Min OB (n\_times=100)'; \
+	set xlabel 'Tamaño de la Tabla (N)'; \
+	set ylabel 'Mínimo de Operaciones Básicas (Min OB)'; \
+	set key off; \
+	set logscale x; \
+	plot 'Bin_N100.dat' u 1:5 w lines title 'Bin Search (Min OB)';"
+
+plot_Bin_N10000_MinOB:
+	@echo Running $@
+	@gnuplot -persist -e " \
+	set title 'Bin Search: Min OB (n\_times=10000)'; \
+	set xlabel 'Tamaño de la Tabla (N)'; \
+	set ylabel 'Mínimo de Operaciones Básicas (Min OB)'; \
+	set key off; \
+	set logscale x; \
+	plot 'Bin_N10000.dat' u 1:5 w lines title 'Bin Search (Min OB)';"
+
+# LINEAR AUTO-ORGANIZED SEARCH (MIN OBs - COLUMNA 5)
+
+plot_LinAuto_N1_MinOB:
+	@echo Running $@
+	@gnuplot -persist -e " \
+	set title 'Lin Auto Search: Min OB (n\_times=1)'; \
+	set xlabel 'Tamaño de la Tabla (N)'; \
+	set ylabel 'Mínimo de Operaciones Básicas (Min OB)'; \
+	set key off; \
+	set logscale x; \
+	plot 'Lin_auto_N1.dat' u 1:5 w lines title 'Lin Auto Search (Min OB)';"
+
+plot_LinAuto_N100_MinOB:
+	@echo Running $@
+	@gnuplot -persist -e " \
+	set title 'Lin Auto Search: Min OB (n\_times=100)'; \
+	set xlabel 'Tamaño de la Tabla (N)'; \
+	set ylabel 'Mínimo de Operaciones Básicas (Min OB)'; \
+	set key off; \
+	set logscale x; \
+	plot 'Lin_auto_N100.dat' u 1:5 w lines title 'Lin Auto Search (Min OB)';"
+
+plot_LinAuto_N10000_MinOB:
+	@echo Running $@
+	@gnuplot -persist -e " \
+	set title 'Lin Auto Search: Min OB (n\_times=10000)'; \
+	set xlabel 'Tamaño de la Tabla (N)'; \
+	set ylabel 'Mínimo de Operaciones Básicas (Min OB)'; \
+	set key off; \
+	set logscale x; \
+	plot 'Lin_auto_N10000.dat' u 1:4 w lines title 'Lin Auto Search (Min OB)';"
+
+
+# BINARY SEARCH (MAX OBs - COLUMNA 4)
+
+plot_Bin_N1_MaxOB:
+	@echo Running $@
+	@gnuplot -persist -e " \
+	set title 'Bin Search: Máx OB (n\_times=1)'; \
+	set xlabel 'Tamaño de la Tabla (N)'; \
+	set ylabel 'Máximo de Operaciones Básicas (Max OB)'; \
+	set key off; \
+	set logscale x; \
+	plot 'Bin_N1.dat' u 1:4 w lines title 'Bin Search (Max OB)';"
+
+plot_Bin_N100_MaxOB:
+	@echo Running $@
+	@gnuplot -persist -e " \
+	set title 'Bin Search: Máx OB (n\_times=100)'; \
+	set xlabel 'Tamaño de la Tabla (N)'; \
+	set ylabel 'Máximo de Operaciones Básicas (Max OB)'; \
+	set key off; \
+	set logscale x; \
+	plot 'Bin_N100.dat' u 1:4 w lines title 'Bin Search (Max OB)';"
+
+plot_Bin_N10000_MaxOB:
+	@echo Running $@
+	@gnuplot -persist -e " \
+	set title 'Bin Search: Máx OB (n\_times=10000)'; \
+	set xlabel 'Tamaño de la Tabla (N)'; \
+	set ylabel 'Máximo de Operaciones Básicas (Max OB)'; \
+	set key off; \
+	set logscale x; \
+	plot 'Bin_N10000.dat' u 1:4 w lines title 'Bin Search (Max OB)';"
+
+
+# LINEAR AUTO-ORGANIZED SEARCH (MAX OBs - COLUMNA 4)
+
+plot_LinAuto_N1_MaxOB:
+	@echo Running $@
+	@gnuplot -persist -e " \
+	set title 'Lin Auto Search: Máx OB (n\_times=1)'; \
+	set xlabel 'Tamaño de la Tabla (N)'; \
+	set ylabel 'Máximo de Operaciones Básicas (Max OB)'; \
+	set key off; \
+	set logscale x; \
+	plot 'Lin_auto_N1.dat' u 1:4 w lines title 'Lin Auto Search (Max OB)';"
+
+plot_LinAuto_N100_MaxOB:
+	@echo Running $@
+	@gnuplot -persist -e " \
+	set title 'Lin Auto Search: Máx OB (n\_times=100)'; \
+	set xlabel 'Tamaño de la Tabla (N)'; \
+	set ylabel 'Máximo de Operaciones Básicas (Max OB)'; \
+	set key off; \
+	set logscale x; \
+	plot 'Lin_auto_N100.dat' u 1:4 w lines title 'Lin Auto Search (Max OB)';"
+
+plot_LinAuto_N10000_MaxOB:
+	@echo Running $@
+	@gnuplot -persist -e " \
+	set title 'Lin Auto Search: Máx OB (n\_times=10000)'; \
+	set xlabel 'Tamaño de la Tabla (N)'; \
+	set ylabel 'Máximo de Operaciones Básicas (Max OB)'; \
+	set key off; \
+	set logscale x; \
+	plot 'Lin_auto_N10000.dat' u 1:4 w lines title 'Lin Auto Search (Max OB)';"
