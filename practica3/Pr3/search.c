@@ -160,12 +160,14 @@ int insert_dictionary(PDICT pdict, int key)
 }
 
 /**
- * @brief 
+ * @brief Realiza la inserción de varias claves 
+ * llamando a la función insert_dictionary
  * 
- * @param pdict 
- * @param keys 
- * @param n_keys 
- * @return int 
+ * @param pdict Puntero al diccionario
+ * @param keys Tabla de elementos a insertar
+ * @param n_keys numero de elementos a insertar
+ * @return Numero de operaciones básicas realizadas 
+ * para insertar todas las claves o ERR en caso de error
  */
 int massive_insertion_dictionary(PDICT pdict, int *keys, int n_keys)
 {
@@ -187,6 +189,16 @@ int massive_insertion_dictionary(PDICT pdict, int *keys, int n_keys)
   return Ob;
 }
 
+/**
+ * @brief Busca una una clave mediante el metodo 
+ * dado y devolviendo su posición por un puntero
+ * 
+ * @param pdict Puntero al diccionario
+ * @param key Clave a buscar
+ * @param ppos Puntero a la posición de la tabla donde se encuentra la clave
+ * @param method Algoritmo de búsqueda empleado
+ * @return Numero de OBs o ERR en caso de error
+ */
 int search_dictionary(PDICT pdict, int key, int *ppos, pfunc_search method)
 {
   if (pdict == NULL || ppos == NULL || method == NULL)
@@ -198,6 +210,17 @@ int search_dictionary(PDICT pdict, int key, int *ppos, pfunc_search method)
 }
 
 /* Search functions of the Dictionary ADT */
+
+/**
+ * @brief Búsqueda binaria
+ * 
+ * @param table Tabla de elementos
+ * @param F Indice del inicio de la tabla
+ * @param L Indice del final de la tabla 
+ * @param key Clave a buscar 
+ * @param ppos Puntero a la posción donde se encuentra la tabla
+ * @return Número de OBs, NOT_FOUND si no se encuentra el elemento o ERR en caso de error
+ */
 int bin_search(int *table, int F, int L, int key, int *ppos)
 {
   int OB = 0;
@@ -234,6 +257,16 @@ int bin_search(int *table, int F, int L, int key, int *ppos)
   return NOT_FOUND;
 }
 
+/**
+ * @brief Búsqueda lineal
+ * 
+ * @param table Tabla de elementos
+ * @param F Indice del inicio de la tabla
+ * @param L Indice del final de la tabla 
+ * @param key Clave a buscar 
+ * @param ppos Puntero a la posción donde se encuentra la tabla
+ * @return Número de OBs, NOT_FOUND si no se encuentra el elemento o ERR en caso de error
+ */
 int lin_search(int *table, int F, int L, int key, int *ppos)
 {
   int OB = 0, i;
@@ -258,6 +291,17 @@ int lin_search(int *table, int F, int L, int key, int *ppos)
   return NOT_FOUND;
 }
 
+/**
+ * @brief Búsqueda lineal autoorganizada (cuando se encuentra una clave, se intercambia con la posición
+anterior, excepto si la clave encontrada ya está en la primera posición de la tabla)
+ * 
+ * @param table Tabla de elementos
+ * @param F Indice del inicio de la tabla
+ * @param L Indice del final de la tabla 
+ * @param key Clave a buscar 
+ * @param ppos Puntero a la posción donde se encuentra la tabla
+ * @return Número de OBs, NOT_FOUND si no se encuentra el elemento o ERR en caso de error
+ */
 int lin_auto_search(int *table, int F, int L, int key, int *ppos)
 {
   int i, OB = 0, aux;
