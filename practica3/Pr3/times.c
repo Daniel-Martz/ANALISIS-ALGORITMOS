@@ -35,13 +35,14 @@ short save_time_table(char *file, PTIME_AA ptime, int N)
 
     for (i = 0; i < N; i++)
     {
-        fprintf(fout, "%-6i %-12.6f %-14.2f %-8i %-8i\n",
+        fprintf(fout, "%-6i %-12.10lf %-14.2lf %-8i %-8i\n",
                 ptime[i].N,
                 ptime[i].time,
                 ptime[i].average_ob,
                 ptime[i].max_ob,
                 ptime[i].min_ob);
     }
+
     fclose(fout);
     return OK;
 }
@@ -54,7 +55,8 @@ short average_search_time(pfunc_search metodo, pfunc_key_generator generator, in
     int *keys = NULL;
     int pos;
     int n_elems;
-    int i, OB_aux, min_OB = -1, max_OB = -1, sum_OB = 0;
+    int i, OB_aux, min_OB = -1, max_OB = -1;
+    long long sum_OB = 0;
     clock_t start, end;
     double time;
 
@@ -130,7 +132,7 @@ short average_search_time(pfunc_search metodo, pfunc_key_generator generator, in
     time = (double)(end - start) / CLOCKS_PER_SEC / n_elems;
 
     ptime->time = time;
-    ptime->average_ob = (double)sum_OB / n_elems;
+    ptime->average_ob = (double)sum_OB / (double)n_elems;
     ptime->max_ob = max_OB;
     ptime->min_ob = min_OB;
     ptime->N = N;
