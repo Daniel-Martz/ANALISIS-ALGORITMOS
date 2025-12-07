@@ -47,13 +47,22 @@ exercise1_test:
 
 exercise2_test:
 	@echo Running exercise2
-	@./exercise2 -num_min 100 -num_max 10000 -incr 100 -n_times 1 -outputFile search_lin_auto.dat
+	@./exercise2 -num_min 1000 -num_max 10000 -incr 10 -n_times 1 -outputFile rodrigo_binaria.dat
 
-plotBinarySearch_test:
-	@echo Running $@ 
-	@./exercise2 -num_min 1 -num_max 1000 -incr 1 -n_times 10 -outputFile datos.log
-	@gnuplot -persist -e "set title 'Binary Search OBs vs Size'; \
-	set xlabel 'Size'; \
-	set ylabel 'OBs'; \
-	plot 'datos.log' u 1:3 w lines title 'Average OB', \
-	"
+plotLinealvsBinaria_promedioOB:
+	@gnuplot -persist -e "set title 'Comparación OBs Promedio: Binaria vs Lineal'; \
+	set xlabel 'Tamaño (N)'; \
+	set ylabel 'Número Medio de OBs'; \
+	set grid; \
+	set key top left; \
+	plot 'rodrigo_lineal.dat' u 1:3 w lines lc rgb 'red' title 'Lineal', \
+	     'rodrigo_binaria.dat' u 1:3 w lines lc rgb 'blue' title 'Binaria'"
+
+plotLinealvsBinaria_promedioTIEMPO:
+	@gnuplot -persist -e "set title 'Comparación Tiempo Promedio: Binaria vs Lineal'; \
+	set xlabel 'Tamaño (N)'; \
+	set ylabel 'Tiempo promedio (s)'; \
+	set grid; \
+	set key top left; \
+	plot 'rodrigo_lineal.dat' u 1:2 w lines lc rgb 'red' title 'Lineal', \
+	     'rodrigo_binaria.dat' u 1:2 w lines lc rgb 'blue' title 'Binaria'"
