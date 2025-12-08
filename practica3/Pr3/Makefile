@@ -50,6 +50,7 @@ exercise2_test:
 	@./exercise2 -num_min 1000 -num_max 10000 -incr 100 -n_times 1 -outputFile Lin_auto_N1.dat
 
 
+#APARTADO 1: Binaria vs Lineal
 plotLinealvsBinaria_promedioOB:
 	@gnuplot -persist -e "set title 'Comparación OBs Promedio: Binaria vs Lineal'; \
 	set xlabel 'Tamaño (N)'; \
@@ -78,15 +79,55 @@ plotBinaria_promedioOB:
 	plot 'rodrigo_binaria_1PARTE.dat' u 1:3 w lines lc rgb 'blue' title 'Binario', \
 	     f(x) w lines lc rgb 'black' title 'Teórica log(N)'"
 
+#APARTADO 2: BINARY VS AUTO (AVG_OB)
+
+plotBinaria_AVG_OB_tablacontodo:
+	@gnuplot -persist -e "set title 'OB Promedio: Binaria'; \
+	set xlabel 'Tamaño (N)'; \
+	set ylabel 'Numero Medio de OBs'; \
+	set grid; \
+	set key top left; \
+	plot 'Bin_N1.dat' u 1:3 w lines lc rgb 'blue' title 'Binaria: n_t_i_m_e_s = 1', \
+	     'Bin_N100.dat' u 1:3 w lines lc rgb 'red' title 'Binaria: n_t_i_m_e_s = 100', \
+		 'Bin_N10000.dat' u 1:3 w lines lc rgb 'brown' title 'Binaria: n_t_i_m_e_s = 10000'"
+
+plotAuto_AVG_OB_tablacontodo:
+	@gnuplot -persist -e "set title 'OB Promedio: Lin Auto'; \
+	set xlabel 'Tamaño (N)'; \
+	set ylabel 'Numero Medio de OBs'; \
+	set grid; \
+	set key top left; \
+	plot 'Lin_auto_N1.dat' u 1:3 w lines lc rgb 'blue' title 'Lin Auto: n_t_i_m_e_s = 1', \
+	     'Lin_auto_N100.dat' u 1:3 w lines lc rgb 'red' title 'Lin Auto: n_t_i_m_e_s = 100', \
+		 'Lin_auto_N10000.dat' u 1:3 w lines lc rgb 'brown' title 'Lin Auto: n_t_i_m_e_s = 10000'"
 
 
+plotBinariavsAuto_AVG_OB_ntimes1:
+	@gnuplot -persist -e "set title 'OB Promedio: Binaria vs Lin Auto (n_t_i_m_e_s = 1)';\
+	set xlabel 'Tamaño (N)';\
+	set ylabel 'Numero Medio de OBs';\
+	set grid;\
+	set key top left;\
+	plot 'Bin_N1.dat' u 1:3 w lines lc rgb 'blue' title 'Binaria: n_t_i_m_e_s = 1',\
+		 'Lin_auto_N1.dat' u 1:3 w lines lc rgb 'brown' title 'Lin auto: n_t_i_m_e_s = 1'"
 
+plotBinariavsAuto_AVG_OB_ntimes100:
+	@gnuplot -persist -e "set title 'OB Promedio: Binaria vs Lin Auto (n_t_i_m_e_s = 100)';\
+	set xlabel 'Tamaño (N)';\
+	set ylabel 'Numero Medio de OBs';\
+	set grid;\
+	set key top left;\
+	plot 'Bin_N100.dat' u 1:3 w lines lc rgb 'blue' title 'Binaria: n_t_i_m_e_s = 100',\
+		 'Lin_auto_N100.dat' u 1:3 w lines lc rgb 'brown' title 'Lin auto: n_t_i_m_e_s = 100'"
 
-
-
-
-
-
+plotBinariavsAuto_AVG_OB_ntimes10000:
+	@gnuplot -persist -e "set title 'OB Promedio: Binaria vs Lin Auto (n_t_i_m_e_s = 10000)';\
+	set xlabel 'Tamaño (N)';\
+	set ylabel 'Numero Medio de OBs';\
+	set grid;\
+	set key top left;\
+	plot 'Bin_N10000.dat' u 1:3 w lines lc rgb 'blue' title 'Binaria: n_t_i_m_e_s = 10000',\
+		 'Lin_auto_N10000.dat' u 1:3 w lines lc rgb 'brown' title 'Lin auto: n_t_i_m_e_s = 10000'"
 
 plotBinarySearch_test:
 	@echo Running $@ 
