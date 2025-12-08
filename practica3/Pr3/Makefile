@@ -159,7 +159,7 @@ plot_LinAuto_N10000_MinOB:
 	set ylabel 'Mínimo de Operaciones Básicas (Min OB)'; \
 	set key off; \
 	set logscale x; \
-	plot 'Lin_auto_N10000.dat' u 1:4 w lines title 'Lin Auto Search (Min OB)';"
+	plot 'Lin_auto_N10000.dat' u 1:5 w lines title 'Lin Auto Search (Min OB)';"
 
 
 # BINARY SEARCH (MAX OBs - COLUMNA 4)
@@ -226,3 +226,69 @@ plot_LinAuto_N10000_MaxOB:
 	set key off; \
 	set logscale x; \
 	plot 'Lin_auto_N10000.dat' u 1:4 w lines title 'Lin Auto Search (Max OB)';"
+
+
+# LINEAR AUTO-ORGANIZED SEARCH (Avg Time - COLUMNA 2)
+
+plot_LinAuto_N1_AvgTime:
+	@echo Running $@
+	@gnuplot -persist -e " \
+	set title 'Lin Auto Search: AvgTime (n\_times=1)'; \
+	set xlabel 'Tamaño de la Tabla (N)'; \
+	set ylabel 'Tiempo medio de reloj (AvgTime)'; \
+	set key off; \
+	set logscale x; \
+	plot 'Lin_auto_N1.dat' u 1:2 w lines title 'Lin Auto Search (AvgTime)';"
+
+plot_LinAuto_N100_AvgTime:
+	@echo Running $@
+	@gnuplot -persist -e " \
+	set title 'Lin Auto Search: AvgTime (n\_times=100)'; \
+	set xlabel 'Tamaño de la Tabla (N)'; \
+	set ylabel 'Tiempo medio de reloj (AvgTime)'; \
+	set key off; \
+	set logscale x; \
+	plot 'Lin_auto_N100.dat' u 1:2 w lines title 'Lin Auto Search (AvgTime)';"
+
+plot_LinAuto_N10000_AvgTime:
+	@echo Running $@
+	@gnuplot -persist -e " \
+	set title 'Lin Auto Search: AvgTime (n\_times=10000)'; \
+	set xlabel 'Tamaño de la Tabla (N)'; \
+	set ylabel 'Tiempo medio de reloj (AvgTime)'; \
+	set key off; \
+	set logscale x; \
+	plot 'Lin_auto_N10000.dat' u 1:2 w lines title 'Lin Auto Search (AvgTime)';"
+
+
+# LINEAR BINARY SEARCH (Avg Time - COLUMNA 2)
+
+plot_Bin_N1_AvgTime:
+	@echo Running $@
+	@gnuplot -persist -e " \
+	set title 'Binary Search: AvgTime (n\_times=1)'; \
+	set xlabel 'Tamaño de la Tabla (N)'; \
+	set ylabel 'Tiempo medio de reloj (AvgTime)'; \
+	set key off; \
+	set logscale x; \
+	plot 'Bin_N1.dat' u 1:2 w lines title 'Bin Search (AvgTime)';"
+
+plot_Bin_N100_AvgTime:
+	@echo Running $@
+	@gnuplot -persist -e " \
+	set title 'Binary Search: AvgTime (n\_times=100)'; \
+	set xlabel 'Tamaño de la Tabla (N)'; \
+	set ylabel 'Tiempo medio de reloj (AvgTime)'; \
+	set key off; \
+	set logscale x; \
+	plot 'Bin_N100.dat' u 1:2 w lines title 'Bin Search (AvgTime)';"
+
+plot_Bin_N10000_AvgTime:
+	@echo Running $@
+	@gnuplot -persist -e " \
+	set title 'Binary Search: AvgTime (n\_times=10000)'; \
+	set xlabel 'Tamaño de la Tabla (N)'; \
+	set ylabel 'Tiempo medio de reloj (AvgTime)'; \
+	set key off; \
+	set logscale x; \
+	plot 'Bin_N10000.dat' u 1:2 w lines title 'Bin Search (AvgTime)';"
