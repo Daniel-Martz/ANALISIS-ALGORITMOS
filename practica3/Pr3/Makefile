@@ -143,63 +143,76 @@ plotBinarySearch_test:
 plot_Bin_N1_MinOB:
 	@echo Running $@
 	@gnuplot -persist -e " \
-	set title 'Bin Search: Min OB (n\_times=1)'; \
+	set title 'Bin Search: Min OB (n_times=1)'; \
 	set xlabel 'Tamaño de la Tabla (N)'; \
 	set ylabel 'Mínimo de Operaciones Básicas (Min OB)'; \
 	set key off; \
 	set logscale x; \
+	set xtics 0,1000,10000; \
+	set ytics 0,1000,10000; \
 	plot 'Bin_N1.dat' u 1:5 w lines title 'Bin Search (Min OB)';"
 
 plot_Bin_N100_MinOB:
 	@echo Running $@
 	@gnuplot -persist -e " \
-	set title 'Bin Search: Min OB (n\_times=100)'; \
+	set title 'Bin Search: Min OB (n_times=100)'; \
 	set xlabel 'Tamaño de la Tabla (N)'; \
 	set ylabel 'Mínimo de Operaciones Básicas (Min OB)'; \
 	set key off; \
 	set logscale x; \
+	set xtics 0,1000,10000; \
+	set ytics 0,1000,10000; \
 	plot 'Bin_N100.dat' u 1:5 w lines title 'Bin Search (Min OB)';"
 
 plot_Bin_N10000_MinOB:
 	@echo Running $@
 	@gnuplot -persist -e " \
-	set title 'Bin Search: Min OB (n\_times=10000)'; \
+	set title 'Bin Search: Min OB (n_times=10000)'; \
 	set xlabel 'Tamaño de la Tabla (N)'; \
 	set ylabel 'Mínimo de Operaciones Básicas (Min OB)'; \
 	set key off; \
 	set logscale x; \
+	set xtics 0,1000,10000; \
+	set ytics 0,1000,10000; \
 	plot 'Bin_N10000.dat' u 1:5 w lines title 'Bin Search (Min OB)';"
+
 
 # LINEAR AUTO-ORGANIZED SEARCH (MIN OBs - COLUMNA 5)
 
 plot_LinAuto_N1_MinOB:
 	@echo Running $@
 	@gnuplot -persist -e " \
-	set title 'Lin Auto Search: Min OB (n\_times=1)'; \
+	set title 'Lin Auto Search: Min OB (n_times=1)'; \
 	set xlabel 'Tamaño de la Tabla (N)'; \
 	set ylabel 'Mínimo de Operaciones Básicas (Min OB)'; \
 	set key off; \
 	set logscale x; \
+	set xtics 0,1000,10000; \
+	set ytics 0,1000,10000; \
 	plot 'Lin_auto_N1.dat' u 1:5 w lines title 'Lin Auto Search (Min OB)';"
 
 plot_LinAuto_N100_MinOB:
 	@echo Running $@
 	@gnuplot -persist -e " \
-	set title 'Lin Auto Search: Min OB (n\_times=100)'; \
+	set title 'Lin Auto Search: Min OB (n_times=100)'; \
 	set xlabel 'Tamaño de la Tabla (N)'; \
 	set ylabel 'Mínimo de Operaciones Básicas (Min OB)'; \
 	set key off; \
 	set logscale x; \
+	set xtics 0,1000,10000; \
+	set ytics 0,1000,10000; \
 	plot 'Lin_auto_N100.dat' u 1:5 w lines title 'Lin Auto Search (Min OB)';"
 
 plot_LinAuto_N10000_MinOB:
 	@echo Running $@
 	@gnuplot -persist -e " \
-	set title 'Lin Auto Search: Min OB (n\_times=10000)'; \
+	set title 'Lin Auto Search: Min OB (n_times=10000)'; \
 	set xlabel 'Tamaño de la Tabla (N)'; \
 	set ylabel 'Mínimo de Operaciones Básicas (Min OB)'; \
 	set key off; \
 	set logscale x; \
+	set xtics 0,1000,10000; \
+	set ytics 0,1000,10000; \
 	plot 'Lin_auto_N10000.dat' u 1:5 w lines title 'Lin Auto Search (Min OB)';"
 
 
@@ -208,31 +221,37 @@ plot_LinAuto_N10000_MinOB:
 plot_Bin_N1_MaxOB:
 	@echo Running $@
 	@gnuplot -persist -e " \
-	set title 'Bin Search: Máx OB (n\_times=1)'; \
+	set title 'Bin Search: Máx OB (n_times=1)'; \
 	set xlabel 'Tamaño de la Tabla (N)'; \
 	set ylabel 'Máximo de Operaciones Básicas (Max OB)'; \
 	set key off; \
 	set logscale x; \
+	set xtics 0,1000,10000; \
+	set ytics 0,1000,10000; \
 	plot 'Bin_N1.dat' u 1:4 w lines title 'Bin Search (Max OB)';"
 
 plot_Bin_N100_MaxOB:
 	@echo Running $@
 	@gnuplot -persist -e " \
-	set title 'Bin Search: Máx OB (n\_times=100)'; \
+	set title 'Bin Search: Máx OB (n_times=100)'; \
 	set xlabel 'Tamaño de la Tabla (N)'; \
 	set ylabel 'Máximo de Operaciones Básicas (Max OB)'; \
 	set key off; \
 	set logscale x; \
+	set xtics 0,1000,10000; \
+	set ytics 0,1000,10000; \
 	plot 'Bin_N100.dat' u 1:4 w lines title 'Bin Search (Max OB)';"
 
 plot_Bin_N10000_MaxOB:
 	@echo Running $@
 	@gnuplot -persist -e " \
-	set title 'Bin Search: Máx OB (n\_times=10000)'; \
+	set title 'Bin Search: Máx OB (n_times=10000)'; \
 	set xlabel 'Tamaño de la Tabla (N)'; \
 	set ylabel 'Máximo de Operaciones Básicas (Max OB)'; \
 	set key off; \
 	set logscale x; \
+	set xtics 0,1000,10000; \
+	set ytics 0,1000,10000; \
 	plot 'Bin_N10000.dat' u 1:4 w lines title 'Bin Search (Max OB)';"
 
 
@@ -241,31 +260,37 @@ plot_Bin_N10000_MaxOB:
 plot_LinAuto_N1_MaxOB:
 	@echo Running $@
 	@gnuplot -persist -e " \
-	set title 'Lin Auto Search: Máx OB (n\_times=1)'; \
+	set title 'Lin Auto Search: Máx OB (n_times=1)'; \
 	set xlabel 'Tamaño de la Tabla (N)'; \
 	set ylabel 'Máximo de Operaciones Básicas (Max OB)'; \
 	set key off; \
 	set logscale x; \
+	set xtics 0,1000,10000; \
+	set ytics 0,1000,10000; \
 	plot 'Lin_auto_N1.dat' u 1:4 w lines title 'Lin Auto Search (Max OB)';"
 
 plot_LinAuto_N100_MaxOB:
 	@echo Running $@
 	@gnuplot -persist -e " \
-	set title 'Lin Auto Search: Máx OB (n\_times=100)'; \
+	set title 'Lin Auto Search: Máx OB (n_times=100)'; \
 	set xlabel 'Tamaño de la Tabla (N)'; \
 	set ylabel 'Máximo de Operaciones Básicas (Max OB)'; \
 	set key off; \
 	set logscale x; \
+	set xtics 0,1000,10000; \
+	set ytics 0,1000,10000; \
 	plot 'Lin_auto_N100.dat' u 1:4 w lines title 'Lin Auto Search (Max OB)';"
 
 plot_LinAuto_N10000_MaxOB:
 	@echo Running $@
 	@gnuplot -persist -e " \
-	set title 'Lin Auto Search: Máx OB (n\_times=10000)'; \
+	set title 'Lin Auto Search: Máx OB (n_times=10000)'; \
 	set xlabel 'Tamaño de la Tabla (N)'; \
 	set ylabel 'Máximo de Operaciones Básicas (Max OB)'; \
 	set key off; \
 	set logscale x; \
+	set xtics 0,1000,10000; \
+	set ytics 0,1000,10000; \
 	plot 'Lin_auto_N10000.dat' u 1:4 w lines title 'Lin Auto Search (Max OB)';"
 
 
@@ -274,62 +299,74 @@ plot_LinAuto_N10000_MaxOB:
 plot_LinAuto_N1_AvgTime:
 	@echo Running $@
 	@gnuplot -persist -e " \
-	set title 'Lin Auto Search: AvgTime (n\_times=1)'; \
+	set title 'Lin Auto Search: AvgTime (n_times=1)'; \
 	set xlabel 'Tamaño de la Tabla (N)'; \
 	set ylabel 'Tiempo medio de reloj (AvgTime)'; \
 	set key off; \
 	set logscale x; \
+	set xtics 0,1000,10000; \
+	set ytics 0,1000,10000; \
 	plot 'Lin_auto_N1.dat' u 1:2 w lines title 'Lin Auto Search (AvgTime)';"
 
 plot_LinAuto_N100_AvgTime:
 	@echo Running $@
 	@gnuplot -persist -e " \
-	set title 'Lin Auto Search: AvgTime (n\_times=100)'; \
+	set title 'Lin Auto Search: AvgTime (n_times=100)'; \
 	set xlabel 'Tamaño de la Tabla (N)'; \
 	set ylabel 'Tiempo medio de reloj (AvgTime)'; \
 	set key off; \
 	set logscale x; \
+	set xtics 0,1000,10000; \
+	set ytics 0,1000,10000; \
 	plot 'Lin_auto_N100.dat' u 1:2 w lines title 'Lin Auto Search (AvgTime)';"
 
 plot_LinAuto_N10000_AvgTime:
 	@echo Running $@
 	@gnuplot -persist -e " \
-	set title 'Lin Auto Search: AvgTime (n\_times=10000)'; \
+	set title 'Lin Auto Search: AvgTime (n_times=10000)'; \
 	set xlabel 'Tamaño de la Tabla (N)'; \
 	set ylabel 'Tiempo medio de reloj (AvgTime)'; \
 	set key off; \
 	set logscale x; \
+	set xtics 0,1000,10000; \
+	set ytics 0,1000,10000; \
 	plot 'Lin_auto_N10000.dat' u 1:2 w lines title 'Lin Auto Search (AvgTime)';"
 
 
-# LINEAR BINARY SEARCH (Avg Time - COLUMNA 2)
+# BINARY SEARCH (Avg Time - COLUMNA 2)
 
 plot_Bin_N1_AvgTime:
 	@echo Running $@
 	@gnuplot -persist -e " \
-	set title 'Binary Search: AvgTime (n\_times=1)'; \
+	set title 'Binary Search: AvgTime (n_times=1)'; \
 	set xlabel 'Tamaño de la Tabla (N)'; \
 	set ylabel 'Tiempo medio de reloj (AvgTime)'; \
 	set key off; \
 	set logscale x; \
+	set xtics 0,1000,10000; \
+	set ytics 0,1000,10000; \
 	plot 'Bin_N1.dat' u 1:2 w lines title 'Bin Search (AvgTime)';"
 
 plot_Bin_N100_AvgTime:
 	@echo Running $@
 	@gnuplot -persist -e " \
-	set title 'Binary Search: AvgTime (n\_times=100)'; \
+	set title 'Binary Search: AvgTime (n_times=100)'; \
 	set xlabel 'Tamaño de la Tabla (N)'; \
 	set ylabel 'Tiempo medio de reloj (AvgTime)'; \
 	set key off; \
 	set logscale x; \
+	set xtics 0,1000,10000; \
+	set ytics 0,1000,10000; \
 	plot 'Bin_N100.dat' u 1:2 w lines title 'Bin Search (AvgTime)';"
 
 plot_Bin_N10000_AvgTime:
 	@echo Running $@
 	@gnuplot -persist -e " \
-	set title 'Binary Search: AvgTime (n\_times=10000)'; \
+	set title 'Binary Search: AvgTime (n_times=10000)'; \
 	set xlabel 'Tamaño de la Tabla (N)'; \
 	set ylabel 'Tiempo medio de reloj (AvgTime)'; \
 	set key off; \
 	set logscale x; \
+	set xtics 0,1000,10000; \
+	set ytics 0,1000,10000; \
 	plot 'Bin_N10000.dat' u 1:2 w lines title 'Bin Search (AvgTime)';"
